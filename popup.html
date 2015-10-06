@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src="js/lib/jquery.js"></script>
+		<script src="js/popup.js"></script>
+		
+		<style>
+			body {
+				width: 320px;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 16px;
+				line-height: 0;
+				margin: 0;
+				-webkit-user-select: none;
+			}
+			
+			.ch {
+				display: none;
+			}
+			
+			label>span {
+				background: #dbdbdb;
+				width: 12px;
+				height: 12px;
+				margin-right: 8px;
+				display: inline-block;
+				transition: background 0.2s;
+				border-radius: 2px;
+			}
+			
+			.ch:checked + label>span {
+				background: #16aaf2;
+			}
+			
+			label {
+				display: flex;
+				align-items: center;
+				background: rgba(22, 170, 242, 0);
+				padding: 8px;
+				margin: 4px;
+				transition: background 0.2s;
+				border-radius: 4px;
+			}
+			
+			.ch:checked + label {
+				background: rgba(22, 170, 242, 0.2);
+			}
+			
+			div {
+				height: 0;
+				margin: -2px 0;
+				padding-left: 0;
+				overflow: hidden;
+				transition: padding-left 0.4s;
+			}
+			
+			.ch:checked + * + div {
+				height: auto;
+				margin: -4px 0;
+				padding-left: 16px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<input type="checkbox" id="twitchemotes" class="ch"><label for="twitchemotes"><span></span>Twitch emotes</label>
+		<input type="checkbox" id="linkimages" class="ch"><label for="linkimages"><span></span>Image previews</label>
+		<input type="checkbox" id="colornames" class="ch"><label for="colornames"><span></span>Color usernames</label>
+		<div>
+			<input type="checkbox" id="colornamesover" class="ch"><label for="colornamesover"><span></span>Overwrite rank color</label>
+		</div>
+		<input type="checkbox" id="beamlink" class="ch"><label for="beamlink"><span></span>BeamLink extension</label>
+		<div>
+			<input type="checkbox" id="beamlinkcolor" class="ch"><label for="beamlinkcolor"><span></span>Decorate username</label>
+		</div>
+		<input type="checkbox" id="showdeleted" class="ch"><label for="showdeleted"><span></span>Show deleted messages</label>
+		<input type="checkbox" id="separator" class="ch"><label for="separator"><span></span>Chat message separator</label>
+	</body>
+</html>
