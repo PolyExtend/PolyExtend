@@ -32,8 +32,10 @@ function addMessage(name, message, id) {
 function replaceMessage(name, message) {
 	working = true;
 	var ranks = getRanks();
-	$(".message:last-child .message-author").text(name);
+	
+	$(".message:last-child .message-author").html(name);
 	$(".message:last-child .message-body").html(message);
+	
 	setRanks(ranks);
 	working = false;
 }
