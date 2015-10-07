@@ -132,8 +132,7 @@ function setRanks(ranks) {
 	}
 	$(".message:last-child .message-author").html(name + "<div class='message-tooltip'>" + divranks + "</div>");
 	
-	$(".message:last-child").removeClass();
-	$(".message:last-child").addClass("message fadeIn a-s-fast message-role-User");
+	$(".message:last-child").removeClass().addClass("message fadeIn a-s-fast message-role-User");
 	for(var i = 0; i < toranks.length; i++) {
 		$(".message:last-child").addClass("message-role-" + toranks[i]);
 	}
@@ -142,7 +141,7 @@ function setRanks(ranks) {
 	for(var i = 0; i < toranks.length; i++) {
 		danranks += toranks[i] + "|";
 	}
-	$(".message:last-child").attr("data-role", danranks + "Users");
+	$(".message:last-child").attr("data-role", danranks + "User");
 	
 	working = false;
 }
