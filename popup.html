@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 
 <html>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<head>
 		<script src="js/lib/jquery.js"></script>
 		<script src="js/popup.js"></script>
 		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		
 		<style>
 			body {
 				width: 320px;
+				background: #ffffff;
+				color: #000000;
 				font-family: Arial, Helvetica, sans-serif;
 				font-size: 16px;
-				line-height: 0;
 				margin: 0;
 				-webkit-user-select: none;
 			}
@@ -20,7 +22,7 @@
 				display: none;
 			}
 			
-			label>span {
+			label > .box {
 				background: #dbdbdb;
 				width: 12px;
 				height: 12px;
@@ -30,7 +32,7 @@
 				border-radius: 2px;
 			}
 			
-			.ch:checked + label>span {
+			.ch:checked + label > .box {
 				background: #16aaf2;
 			}
 			
@@ -61,22 +63,62 @@
 				margin: -4px 0;
 				padding-left: 16px;
 			}
+			
+			.fa {
+				color: #dbdbdb;
+				transition: color 0.2s;
+				margin-left: auto;
+			}
+			
+			.ch:checked + label .fa {
+				color: #16aaf2;
+			}
 		</style>
 	</head>
 	
 	<body>
-		<input type="checkbox" id="twitchemotes" class="ch"><label for="twitchemotes"><i class="fa fa-twitch"></i><span></span>Twitch emotes</label>
-		<input type="checkbox" id="linkimages" class="ch"><label for="linkimages"><i class="fa fa-picture-o"></i><span></span>Image previews</label>
-		<input type="checkbox" id="colornames" class="ch"><label for="colornames"<i class="fa fa-paint-brush"></i><span></span>Color usernames</label>
+		<input type="checkbox" id="twitchemotes" class="ch">
+		<label for="twitchemotes">
+			<span class="box"></span><span class="text">Twitch emotes</span><i class="fa fa-smile-o"></i>
+		</label>
+		
+		<input type="checkbox" id="linkimages" class="ch">
+		<label for="linkimages">
+			<span class="box"></span><span class="text">Image previews</span><i class="fa fa-picture-o"></i>
+		</label>
+		
+		<input type="checkbox" id="colornames" class="ch">
+		<label for="colornames">
+			<span class="box"></span><span class="text">Color usernames</span><i class="fa fa-user-plus"></i>
+		</label>
+		
 		<div>
-			<input type="checkbox" id="colornamesover" class="ch"><label for="colornamesover"<i class="fa fa-paint-brush"></i><span></span>Overwrite rank color</label>
+			<input type="checkbox" id="colornamesover" class="ch">
+			<label for="colornamesover">
+				<span class="box"></span><span class="text">Overwrite rank color</span><i class="fa fa-pencil"></i>
+			</label>
 		</div>
-		<input type="checkbox" id="beamlink" class="ch"><label for="beamlink"<i class="fa fa-twitch"></i><span></span>BeamLink extension</label>
+		
+		<input type="checkbox" id="beamlink" class="ch">
+		<label for="beamlink">
+			<span class="box"></span><span class="text">BeamLink extension</span><i class="fa fa-link"></i>
+		</label>
+		
 		<div>
-			<input type="checkbox" id="beamlinkcolor" class="ch"><label for="beamlinkcolor"<i class="fa fa-paint-brush"></i><span></span>Decorate username</label>
+			<input type="checkbox" id="beamlinkcolor" class="ch">
+			<label for="beamlinkcolor">
+				<span class="box"></span><span class="text">Decorate username</span><i class="fa fa-paint-brush"></i>
+			</label>
 		</div>
-		<input type="checkbox" id="showdeleted" class="ch"><label for="showdeleted"><i class="fa fa-ban"></i><span></span>Show deleted messages</label>
-		<input type="checkbox" id="separator" class="ch"><label for="separator"><i class="fa fa-sliders"></i><span></span>Chat message separator</label>
-		<input type="checkbox" <label for="separator"><i class="fa fa-copyright"></i><span></span>Copyright Tromino And Bacon_Space</label>
+		
+		<input type="checkbox" id="showdeleted" class="ch">
+		<label for="showdeleted">
+			<span class="box"></span><span class="text">Show deleted messages</span><i class="fa fa-eye"></i>
+		</label>
+		
+		<input type="checkbox" id="separator" class="ch">
+		<label for="separator">
+			<span class="box"></span><span class="text">Chat message separator</span><i class="fa fa-comment"></i>
+		</label>
 	</body>
 </html>
