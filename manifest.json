@@ -1,11 +1,10 @@
 {
 	"manifest_version": 2,
 	"name": "PolyExtend",
-	"description": "Extend your stream experience",
+	"description": "Enhance your stream experience!",
 	"version": "1.0.2",
 	"icons": {"256": "icon.png"},
 	"permissions": ["storage"],
-	
 	"content_scripts": [
 		{
 			"matches": ["*://*.beam.pro/*"],
