@@ -35,7 +35,7 @@ function addMessage(name, message, id) {
 		var toda = "";
 	}
 	
-	$(".message:last-child").append(
+	$(".messages .nano-content").append(
 		"<div" + toid + " class='message fadeIn a-s-fast message-role-User' data-role='User'>" +
 			"<div class='message-author'" + toda + ">" +
 				name +
