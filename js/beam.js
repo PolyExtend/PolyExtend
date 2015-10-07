@@ -76,7 +76,7 @@ function addBadge(image) {
 }
 
 function getRanks() {
-	var text = $(".message:last-child .message-author .text-role").text();
+	var text = $(".message:last-child .message-tooltip").text();
 	var ranks = [];
 	
 	if(text.indexOf("Owner") > -1) {

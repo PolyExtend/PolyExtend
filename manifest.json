@@ -16,9 +16,11 @@
 				"js/main.js",
 				"js/beam.js",
 				
+				"js/feat/emotes.js",
+				"js/feat/images.js",
 				"js/feat/beamlink.js",
-				"js/feat/colors.js",
-				"js/feat/images.js"
+				"js/feat/teams.js",
+				"js/feat/colors.js"
 			]
 		},
 		
@@ -31,9 +33,11 @@
 				"js/main.js",
 				"js/twitch.js",
 				
+				"js/feat/emotes.js",
+				"js/feat/images.js",
 				"js/feat/beamlink.js",
-				"js/feat/colors.js",
-				"js/feat/images.js"
+				"js/feat/teams.js",
+				"js/feat/colors.js"
 			]
 		}
 	],

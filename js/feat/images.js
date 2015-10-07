@@ -5,8 +5,6 @@ onMessageAdd(function(name, message, id) {
 		for(var i = 0; i < htmlized.children("a").length; i++) {
 			var div = $(htmlized.children("a")[i]);
 			
-			console.log(div.text());
-			
 			if(div.text().slice(-4) == ".png" ||
 			div.text().slice(-4) == ".jpg" ||
 			div.text().slice(-4) == ".gif") {
