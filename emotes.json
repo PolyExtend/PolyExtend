@@ -1,23 +1,15 @@
 {
 	"global": [
-		{"name": "Mappa", "url": "mappa"},
-		{"name": "Wat", "url": "wat"}
+		"Mappa",
+		"Wat"
 	],
-	"user": [
-		["Tromino", [
-			{"name": "blingAww", "url": ""},
-			{"name": "blingAwww", "url": ""},
-			{"name": "blingAwwww", "url": ""}
-		]],
-		["Matt", [
-			{"name": "blingAww", "url": ""},
-			{"name": "blingAwww", "url": ""},
-			{"name": "blingAwwww", "url": ""}
-		]],
-		["James", [
-			{"name": "blingAww", "url": ""},
-			{"name": "blingAwww", "url": ""},
-			{"name": "blingAwwww", "url": ""}
-		]]
-	]
+	"user": {
+		"tromino": [
+			"blingAww",
+			"laal",
+			"rng",
+			"Sethpa"
+		],
+		"trominode": "tromino"
+	}
 }
