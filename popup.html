@@ -4,82 +4,14 @@
 	<head>
 		<script src="js/lib/jquery.js"></script>
 		<script src="js/popup.js"></script>
-		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		
-		<style>
-			body {
-				width: 320px;
-				background: #ffffff;
-				color: #000000;
-				font-family: Arial, Helvetica, sans-serif;
-				font-size: 16px;
-				margin: 0;
-				-webkit-user-select: none;
-			}
-			
-			.ch {
-				display: none;
-			}
-			
-			label > .box {
-				background: #dbdbdb;
-				width: 12px;
-				height: 12px;
-				margin-right: 8px;
-				display: inline-block;
-				transition: background 0.2s;
-				border-radius: 2px;
-			}
-			
-			.ch:checked + label > .box {
-				background: #16aaf2;
-			}
-			
-			label {
-				display: flex;
-				align-items: center;
-				background: rgba(22, 170, 242, 0);
-				padding: 8px;
-				margin: 4px;
-				transition: background 0.2s;
-				border-radius: 4px;
-			}
-			
-			.ch:checked + label {
-				background: rgba(22, 170, 242, 0.2);
-			}
-			
-			div {
-				height: 0;
-				margin: -2px 0;
-				padding-left: 0;
-				overflow: hidden;
-				transition: padding-left 0.4s;
-			}
-			
-			.ch:checked + * + div {
-				height: auto;
-				margin: -4px 0;
-				padding-left: 16px;
-			}
-			
-			.fa {
-				color: #dbdbdb;
-				transition: color 0.2s;
-				margin-left: auto;
-			}
-			
-			.ch:checked + label .fa {
-				color: #16aaf2;
-			}
-		</style>
+		<link rel="stylesheet" href="popup.css">
 	</head>
 	
 	<body>
 		<input type="checkbox" id="twitchemotes" class="ch">
 		<label for="twitchemotes">
-			<span class="box"></span><span class="text">Twitch emotes</span><i class="fa fa-smile-o"></i>
+			<span class="box"></span><span class="text">Twitch emotes</span><i class="fa fa-twitch"></i>
 		</label>
 		
 		<input type="checkbox" id="linkimages" class="ch">
@@ -87,17 +19,27 @@
 			<span class="box"></span><span class="text">Image previews</span><i class="fa fa-picture-o"></i>
 		</label>
 		
+		<input type="checkbox" id="realthumbs" class="ch">
+		<label for="realthumbs">
+			<span class="box"></span><span class="text">Show channel thumbnails</span><i class="fa fa-camera"></i>
+		</label>
+		
 		<input type="checkbox" id="colornames" class="ch">
 		<label for="colornames">
-			<span class="box"></span><span class="text">Color usernames</span><i class="fa fa-user-plus"></i>
+			<span class="box"></span><span class="text">Color usernames</span><i class="fa fa-paint-brush"></i>
 		</label>
 		
 		<div>
 			<input type="checkbox" id="colornamesover" class="ch">
 			<label for="colornamesover">
-				<span class="box"></span><span class="text">Overwrite rank color</span><i class="fa fa-pencil"></i>
+				<span class="box"></span><span class="text">Overwrite rank color</span><i class="fa fa-download"></i>
 			</label>
 		</div>
+		
+		<input type="checkbox" id="chatalerts" class="ch">
+		<label for="chatalerts">
+			<span class="box"></span><span class="text">Highlight mentions</span><i class="fa fa-bell"></i>
+		</label>
 		
 		<input type="checkbox" id="beamlink" class="ch">
 		<label for="beamlink">
@@ -107,7 +49,7 @@
 		<div>
 			<input type="checkbox" id="beamlinkcolor" class="ch">
 			<label for="beamlinkcolor">
-				<span class="box"></span><span class="text">Decorate username</span><i class="fa fa-paint-brush"></i>
+				<span class="box"></span><span class="text">Decorate username</span><i class="fa fa-pencil"></i>
 			</label>
 		</div>
 		
@@ -118,7 +60,12 @@
 		
 		<input type="checkbox" id="separator" class="ch">
 		<label for="separator">
-			<span class="box"></span><span class="text">Chat message separator</span><i class="fa fa-comment"></i>
+			<span class="box"></span><span class="text">Chat message separator</span><i class="fa fa-bars"></i>
+		</label>
+		
+		<input type="checkbox" id="darkheader" class="ch">
+		<label for="darkheader">
+			<span class="box"></span><span class="text">Dark header bar</span><i class="fa fa-lightbulb-o"></i>
 		</label>
 	</body>
 </html>

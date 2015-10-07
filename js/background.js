@@ -1,14 +1,17 @@
 chrome.storage.sync.get("options", function(items) {
-	if(!items.options || Object.keys(items.options).length != 8) {
+	if(!items.options || Object.keys(items.options).length != 11) {
 		chrome.storage.sync.set({options: {
 			twitchemotes: true,
 			linkimages: true,
+			realthumbs: false,
 			colornames: false,
-			colornamesover: true,
+			colornamesover: false,
+			chatalerts: true,
 			beamlink: true,
 			beamlinkcolor: true,
 			showdeleted: false,
-			separator: false
+			separator: false,
+			darkheader: false
 		}});
 	}
 });

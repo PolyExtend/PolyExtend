@@ -27,6 +27,25 @@ $("body").on("DOMNodeRemoved", ".messages .nano-content", function() {
 function addMessage(name, message, id) {
 	working = true;
 	
+	if(id) {
+		var toid = " id='" + id + "'";
+		var toda = " data-message='" + id + "'";
+	} else {
+		var toid = "";
+		var toda = "";
+	}
+	
+	$(".message:last-child").append(
+		"<div" + toid + " class='message fadeIn a-s-fast message-role-User' data-role='User'>" +
+			"<div class='message-author'" + toda + ">" +
+				name +
+			"</div>" +
+			"<div class='message-body'>" +
+				message +
+			"</div>" +
+		"</div>"
+	);
+	
 	working = false;
 }
 function replaceMessage(name, message) {
@@ -83,8 +102,64 @@ function getRanks() {
 }
 function setRanks(ranks) {
 	working = true;
+	var name = $(".message:last-child .message-author").clone().children().remove().end().text();
+	var toranks = [];
+	
+	for(var i = 0; i < ranks.length; i++) {
+		if(ranks[i] == "streamer") {
+			toranks.push("Owner");
+		}
+		if(ranks[i] == "mod") {
+			toranks.push("Mod");
+		}
+		if(ranks[i] == "admin") {
+			toranks.push("Admin");
+		}
+		if(ranks[i] == "dev") {
+			toranks.push("Dev");
+		}
+		if(ranks[i] == "pro") {
+			toranks.push("Pro");
+		}
+		if(ranks[i] == "sub") {
+			toranks.push("Subscriber");
+		}
+	}
+	
+	var divranks = "";
+	for(var i = 0; i < toranks.length; i++) {
+		divranks += "<span class='text-role text-role-" + toranks[i] + "'>" + toranks[i] + "</span>";
+	}
+	$(".message:last-child .message-author").html(name + "<div class='message-tooltip'>" + divranks + "</div>");
+	
+	$(".message:last-child").removeClass();
+	$(".message:last-child").addClass("message fadeIn a-s-fast message-role-User");
+	for(var i = 0; i < toranks.length; i++) {
+		$(".message:last-child").addClass("message-role-" + toranks[i]);
+	}
+	
+	var danranks = "";
+	for(var i = 0; i < toranks.length; i++) {
+		danranks += toranks[i] + "|";
+	}
+	$(".message:last-child").attr("data-role", danranks + "Users");
 	
 	working = false;
+}
+
+function getStreamerName() {
+	name = window.location.pathname;
+	arr = [];
+	
+	for(var i = 0; i < name.length; i++) {
+		if(name.charAt(i) == "/") {
+			arr.push("");
+		} else {
+			arr[arr.length - 1] += name.charAt(i);
+		}
+	}
+	
+	return arr[arr.length - 1];
 }
 
 function onMessageAdd(callback) {
