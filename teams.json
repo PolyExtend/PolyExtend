@@ -5,6 +5,18 @@
 			"bacon_space"
 		]
 	},
+		"TheSpaceArmy Member": {
+		"members": [
+			"homelesmidgets",
+			"bacon_space",
+			"lite20",
+			"lumpdizzle666",
+			"zacw1994",
+			"thatblueninja",
+			"igamersteven",
+			"kylelehman55"
+		]
+	},
 	"Bot": {
 		"color": "#c74d19",
 		"members": [
@@ -19,9 +31,12 @@
 			"homes_bot",
 			"someone",
 			"vgbot",
-			"thespacearmy",
+			"b_spacebot",
 			"spacebot",
 			"demouser",
+			"jackthedogbot",
+			"rizeupgamingbot",
+			"donate",
 			"fluffy"
 		]
 	}
