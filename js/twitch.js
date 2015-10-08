@@ -40,7 +40,6 @@ function addMessage(name, message, id) {
 function replaceMessage(name, message, id) {
 	working = true;
 	var ranks = getRanks();
-    console.log(message);
     $(document.getElementById("ember" + id)).html(
         '<li id="ember' + (id + 1) + '" class="ember-view message-line chat-line">' +
             '<div class="indicator"></div>' +
