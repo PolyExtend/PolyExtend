@@ -48,7 +48,7 @@ function addMessage(name, message, id) {
 	
 	working = false;
 }
-function replaceMessage(name, message) {
+function replaceMessage(name, message, id) {
 	working = true;
 	var ranks = getRanks();
 	

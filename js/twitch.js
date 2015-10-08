@@ -5,34 +5,20 @@ var delevents = [];
 var processed = {};
 $("body").on("DOMNodeInserted", ".chat-lines", function(evt) {
     if(!working) {
-        if(!processed[evt.target.id]) {
-            for(var i = 0; i < addevents.length; i++) {
-                if(addevents[i]) {
-                    console.log($(evt.target).find(".message").html());
-                    var name = $(evt.target).find(".from").text();
-                    var message = $(evt.target).find(".message").html();
-                    var id = evt.target.id.replace(/\D/g,'');
-                    addevents[i](name, message, id);
+        for(var i = 0; i < addevents.length; i++) {
+            if(addevents[i]) {
+                var name = $(evt.target).find(".from").text();
+                var message = $(evt.target).find(".message").html();
+                var id = evt.target.id.replace(/\D/g,'');
+                addevents[i](name, message, id);
 
-                }
             }
-
-            processed[evt.target.id] = true;
-
         }
     }
 });
 
 function addMessage(name, message, id) {
 	working = true;
-	if(id) {
-		var toid = " id='" + id + "'";
-		var toda = " data-message='" + id + "'";
-	} else {
-		var toid = "";
-		var toda = "";
-	}
-
 	$(".chat-lines").append(
 		'<div id="ember' + id + '" class="ember-view">' +
             '<li id="ember' + (id + 1) + '" class="ember-view message-line chat-line">' +
@@ -51,13 +37,22 @@ function addMessage(name, message, id) {
 
 	working = false;
 }
-function replaceMessage(name, message) {
+function replaceMessage(name, message, id) {
 	working = true;
 	var ranks = getRanks();
-
-	$(".chat-line:last-child .from").html(name);
-	$(".chat-line:last-child .message").html(message);
-
+    console.log(message);
+    $(document.getElementById("ember" + id)).html(
+        '<li id="ember' + (id + 1) + '" class="ember-view message-line chat-line">' +
+            '<div class="indicator"></div>' +
+            '<span class="timestamp float-left">6:54</span>' +
+            '<span class="mod-icons float-left">' +
+                '<a class="mod-icon float-left tooltip ban" title="Ban User" href="#">Ban</a>' +
+                '<a class="mod-icon float-left tooltip timeout" title="Timeout User" href="#">Timeout</a>' +
+            '</span>' +
+            '<span class="badges float-left"></span>' +
+            '<span class="from" style="color:#8A2BE2">' + name + '</span>' +
+            '<span class="colon">:</span> <span class="message" style="undefined">' + message + '</span>' +
+        '</li>');
 	setRanks(ranks);
 	working = false;
 }
@@ -134,7 +129,6 @@ function setRanks(ranks) {
 		divranks += "<span class='text-role text-role-" + toranks[i] + "'>" + toranks[i] + "</span>";
 	}
 	$(".message:last-child .message-author").html(name + "<div class='message-tooltip'>" + divranks + "</div>");
-
 	$(".message:last-child").removeClass().addClass("message fadeIn a-s-fast message-role-User");
 	for(var i = 0; i < toranks.length; i++) {
 		$(".message:last-child").addClass("message-role-" + toranks[i]);
