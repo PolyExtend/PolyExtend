@@ -13,7 +13,6 @@ onMessageAdd(function(name, message, id) {
                 }
             }
         } else if(site === "twitch") {
-            console.log(id);
             if((name.toLowerCase() == "beamlink" || name.toLowerCase() == "beamlinkdev")) {
                 replaceMessage(
                     message.slice(1, message.indexOf("]")),
