@@ -79,6 +79,7 @@
 	"Bot": {
 		"color": "#c74d19",
 		"members": [
+			"beamlink",
 			"scottybot",
 			"nightbot",
 			"blipbot",
