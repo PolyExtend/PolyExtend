@@ -15,12 +15,31 @@ onMessageAdd(function(name, message, id) {
             replaceMessage(name, htmlized.html());
         }
     } else if(site === "twitch") {
-        // http://stackoverflow.com/questions/11047670/creating-a-jquery-object-from-a-big-html-string
-        var href = $('<div/>').html(message).contents().attr('href');
-        var imghtml = "<img src='" + href + "' style='display: block; max-width: 100%; max-height: 200px; border-radius: 4px;'>";
-        replaceMessage(name, imghtml, id);
-      /*
-      <a href="https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg" style="display: block; max-width: 100%; max-height: 200px; border-radius: 4px;"></a>
-      */
+        if(message) {
+            if(message.indexOf("a href=") > -1) {
+                // http://stackoverflow.com/questions/11047670/creating-a-jquery-object-from-a-big-html-string
+                var href = getInterSegment(message, 'href=', ' ');
+                href = href.replace("ref=", "");
+                href = href.replace('"', '');
+                href = href.substring(0, href.length - 1);
+                console.log("href: " + href);
+                var orig = "<" + getInterSegment(message, '<a', '</a>') + "</a>";
+                console.log("Original: " + orig);
+                var built = "<img src='" + href + "' style='display: block; max-width: 100%; max-height: 200px; border-radius: 4px;' href='" + href + "' target='_blank'>";
+                console.log("Built: " + built);
+                var msgNEW = message.replace(orig, built); // replace link with image object
+                console.log("Result: " + msgNEW);
+                replaceMessage(name, msgNEW, id);
+
+            }
+        }
     }
 });
+
+function getInterSegment(msg, start, end) {
+    var test_str = msg;
+    var start_pos = test_str.indexOf(start) + 1;
+    var end_pos = test_str.indexOf(end, start_pos);
+    return test_str.substring(start_pos, end_pos);
+
+}

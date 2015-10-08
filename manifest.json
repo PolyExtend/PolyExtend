@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "PolyExtend",
 	"description": "Enhance your stream experience!",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"icons": {"256": "icon.png"},
 	"permissions": ["storage"],
 	"content_scripts": [
