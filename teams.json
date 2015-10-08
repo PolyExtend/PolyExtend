@@ -6,76 +6,6 @@
 			"lite20"
 		]
 	},
-	"TheSpaceArmy Member": {
-		"color": "#FFA500",
-		"members": [
-			"homelesmidgets",
-			"bacon_space",
-			"lite20",
-			"tromino"
-			"lumpdizzle666",
-			"zacw1994",
-			"thatblueninja",
-			"igamersteven",
-			"auruyn",
-			"dan__",
-			"kylelehman55"
-		]
-	},
-	"RizeupGaming Member": {
-		"color": "#ba55d3",
-		"members": [
-			"lolinia",
-			"rizeupgaming",
-			"beambam",
-			"fusion",
-			"photofusion"
-			"lumpdizzle666",
-			"mewphisto",
-			"sezzawatches",
-			"noirmagic",
-			"artforidiots",
-			"synapse",
-			"indie"
-		]
-	},
-	"Music Member": {
-		"color": "#E168FD",
-		"members": [
-			"popskyy",
-			"duke",
-			"biggiantcircles",
-			"ninety9lives",
-			"monstercat",
-			"approachingnirvana"
-		]
-	},
-	"VarietyGamers Member": {
-		"color": "#62FF00",
-		"members": [
-			"homelesmidgets",
-			"bacon_space",
-			"lite20",
-			"tromino"
-			"lumpdizzle666",
-			"cwhitemaster99",
-                        "0kirstylouise0",
-                        "sargent_merrick",
-                        "xdivineclownx",
-                        "ovowls",
-                        "mr_bo_jenkins",
-                        "roshugaming",
-                        "roshu666",
-                        "varietygamers",
-                        "varietygamersteam",
-                        "nasa7",
-                        "evelyn3905",
-                        "sezzawatches",
-                        "redgreen125",
-                        "soma",
-                        "rufioguy"
-		]
-	},
 	"Bot": {
 		"color": "#c74d19",
 		"members": [
@@ -98,6 +28,72 @@
 			"rizeupgamingbot",
 			"donate",
 			"fluffy"
+		]
+	},
+	"TheSpaceArmy Member": {
+		"members": [
+			"homelesmidgets",
+			"bacon_space",
+			"lite20",
+			"tromino"
+			"lumpdizzle666",
+			"zacw1994",
+			"thatblueninja",
+			"igamersteven",
+			"auruyn",
+			"dan__",
+			"kylelehman55"
+		]
+	},
+	"RizeupGaming Member": {
+		"members": [
+			"lolinia",
+			"rizeupgaming",
+			"beambam",
+			"fusion",
+			"photofusion"
+			"lumpdizzle666",
+			"mewphisto",
+			"sezzawatches",
+			"noirmagic",
+			"artforidiots",
+			"synapse",
+			"indie"
+		]
+	},
+	"Music": {
+		"members": [
+			"popskyy",
+			"duke",
+			"biggiantcircles",
+			"ninety9lives",
+			"monstercat",
+			"approachingnirvana"
+		]
+	},
+	"VarietyGamers Member": {
+		"members": [
+			"homelesmidgets",
+			"bacon_space",
+			"lite20",
+			"tromino"
+			"lumpdizzle666",
+			"cwhitemaster99",
+                        "0kirstylouise0",
+                        "sargent_merrick",
+                        "xdivineclownx",
+                        "ovowls",
+                        "mr_bo_jenkins",
+                        "roshugaming",
+                        "roshu666",
+                        "varietygamers",
+                        "varietygamersteam",
+                        "nasa7",
+                        "evelyn3905",
+                        "sezzawatches",
+                        "redgreen125",
+                        "soma",
+                        "rufioguy"
 		]
 	}
 }
