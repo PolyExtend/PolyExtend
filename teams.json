@@ -25,7 +25,7 @@
 			"jamybot",
 			"tacobot",
 			"lightbot",
-			"giveawaybot",
+			"giveawayBot",
 			"someone",
 			"shepherd",
 			"botfromtexas",
@@ -43,7 +43,6 @@
 		]
 	},
 	"TheSpaceArmy Member": {
-		"color": "#c74d12",
 		"members": [
 			"homelesmidgets",
 			"lite20",
