@@ -3,6 +3,19 @@ var site = "beam";
 var addevents = [];
 var delevents = [];
 
+$("document").ready(function() {
+	$("head").append(
+		"<style>" +
+			".polyafter {" +
+				"display: none;" +
+			"}" +
+			".message-author:hover .polyafter {" +
+				"display: inline-block;" +
+			"}" +
+		"</style>"
+	);
+});
+
 $("body").on("DOMNodeInserted", ".messages .nano-content", function() {
 	if(!working) {
 		for(var i = 0; i < addevents.length; i++) {
@@ -71,7 +84,14 @@ function addColor(color) {
 }
 function addBadge(image) {
 	working = true;
-	$(".message:last-child .message-author").prepend("<img src='" + image + "' style='margin-right: 8px;'>");
+	
+	if($(".message:last-child .message-author").hasClass("polyfirst")) {
+		$(".message:last-child .message-author").prepend("<img src='" + image + "' class='polyafter' style='margin-right: 6px; width: 16px; height: 16px;'>");
+	} else {
+		$(".message:last-child .message-author").addClass("polyfirst");
+		$(".message:last-child .message-author").prepend("<img src='" + image + "' style='margin-right: 6px; width: 16px; height: 16px;'>");
+	}
+	
 	working = false;
 }
 
