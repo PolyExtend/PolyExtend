@@ -11,6 +11,7 @@
 			"matches": ["*://*.beam.pro/*"],
 			"js": [
 				"js/lib/jquery.js",
+				"js/lib/observe.js",
 				"js/lib/bigint.js",
 				
 				"js/main.js",
@@ -28,6 +29,7 @@
 			"matches": ["*://*.twitch.tv/*"],
 			"js": [
 				"js/lib/jquery.js",
+				"js/lib/observe.js",
 				"js/lib/bigint.js",
 				
 				"js/main.js",

@@ -1,6 +1,6 @@
-var working = false;
+var working = false; // When true, doesn't trigger message events.
 var site = "beam";
-var addevents = [];
+var addevents = []; // Arrays for functions to be run for message events.
 var delevents = [];
 
 $("document").ready(function() {
@@ -14,33 +14,35 @@ $("document").ready(function() {
 			"}" +
 		"</style>"
 	);
-});
-
-$("body").on("DOMNodeInserted", ".messages .nano-content", function() {
-	if(!working) {
-		for(var i = 0; i < addevents.length; i++) {
-			if(addevents[i]) {
-				var name = $(".message:last-child .message-author").clone().children().remove().end().text();
-				var message = $(".message:last-child .message-body").html();
-				var id = $(".message:last-child").attr("id");
-				
-				addevents[i](name, message, id);
+	
+	$("body").observe("added", ".messages .nano-content>*", function() { // When a message is added...
+		if(!working) {
+			for(var i = 0; i < addevents.length; i++) { // Run each event function.
+				if(addevents[i]) {
+					var name = $(".message:last-child .message-author").clone().children().remove().end().text();
+					var message = $(".message:last-child .message-body").html();
+					var id = $(".message:last-child").attr("id");
+					
+					addevents[i](name, message, id);
+				}
 			}
 		}
-	}
-});
-$("body").on("DOMNodeRemoved", ".messages .nano-content", function() {
-	for(var i = 0; i < delevents.length; i++) {
-		if(delevents[i]) {
-			delevents[i]();
+	});
+	$("body").observe("removed", ".messages .nano-content>*", function() { // When a message is removed...
+		if(!working) {
+			for(var i = 0; i < delevents.length; i++) { // Run each event function.
+				if(delevents[i]) {
+					delevents[i]();
+				}
+			}
 		}
-	}
+	});
 });
 
 function addMessage(name, message, id) {
 	working = true;
 	
-	if(id) {
+	if(id) { // Set id if one is given.
 		var toid = " id='" + id + "'";
 		var toda = " data-message='" + id + "'";
 	} else {
@@ -48,7 +50,7 @@ function addMessage(name, message, id) {
 		var toda = "";
 	}
 	
-	$(".messages .nano-content").append(
+	$(".messages .nano-content").append( // Add the message.
 		"<div" + toid + " class='message fadeIn a-s-fast message-role-User' data-role='User'>" +
 			"<div class='message-author'" + toda + ">" +
 				name +
@@ -63,12 +65,12 @@ function addMessage(name, message, id) {
 }
 function replaceMessage(name, message) {
 	working = true;
-	var ranks = getRanks();
+	var ranks = getRanks(); // Get ranks since the name will be replaced.
 	
 	$(".message:last-child .message-author").html(name);
 	$(".message:last-child .message-body").html(message);
 	
-	setRanks(ranks);
+	setRanks(ranks); // Add ranks back.
 	working = false;
 }
 function removeMessage() {
@@ -85,7 +87,7 @@ function addColor(color) {
 function addBadge(image) {
 	working = true;
 	
-	if($(".message:last-child .message-author").hasClass("polyfirst")) {
+	if($(".message:last-child .message-author").hasClass("polyfirst")) { // Give all badges except one the "polyafter" class.
 		$(".message:last-child .message-author").prepend("<img src='" + image + "' class='polyafter' style='margin-right: 6px; width: 16px; height: 16px;'>");
 	} else {
 		$(".message:last-child .message-author").addClass("polyfirst");
@@ -96,10 +98,10 @@ function addBadge(image) {
 }
 
 function getRanks() {
-	var text = $(".message:last-child .message-tooltip").text();
+	var text = $(".message:last-child .message-tooltip").text(); // Get the ranks from the tooltip text.
 	var ranks = [];
 	
-	if(text.indexOf("Owner") > -1) {
+	if(text.indexOf("Owner") > -1) { // Replace rank names and return them.
 		ranks.push("streamer");
 	}
 	if(text.indexOf("Mod") > -1) {
@@ -122,10 +124,10 @@ function getRanks() {
 }
 function setRanks(ranks) {
 	working = true;
-	var name = $(".message:last-child .message-author").clone().children().remove().end().text();
+	var name = $(".message:last-child .message-author").clone().children().remove().end().text(); // Get name without any HTML.
 	var toranks = [];
 	
-	for(var i = 0; i < ranks.length; i++) {
+	for(var i = 0; i < ranks.length; i++) { // Change the names back to what Beam uses.
 		if(ranks[i] == "streamer") {
 			toranks.push("Owner");
 		}
@@ -146,18 +148,18 @@ function setRanks(ranks) {
 		}
 	}
 	
-	var divranks = "";
+	var divranks = ""; // String full of spans which will go in the tooltip.
 	for(var i = 0; i < toranks.length; i++) {
 		divranks += "<span class='text-role text-role-" + toranks[i] + "'>" + toranks[i] + "</span>";
 	}
 	$(".message:last-child .message-author").html(name + "<div class='message-tooltip'>" + divranks + "</div>");
 	
-	$(".message:last-child").removeClass().addClass("message fadeIn a-s-fast message-role-User");
+	$(".message:last-child").removeClass().addClass("message fadeIn a-s-fast message-role-User"); // Add the classes.
 	for(var i = 0; i < toranks.length; i++) {
 		$(".message:last-child").addClass("message-role-" + toranks[i]);
 	}
 	
-	var danranks = "";
+	var danranks = ""; // Add stuff to data-role.
 	for(var i = 0; i < toranks.length; i++) {
 		danranks += toranks[i] + "|";
 	}
@@ -170,7 +172,7 @@ function getStreamerName() {
 	name = window.location.pathname;
 	arr = [];
 	
-	for(var i = 0; i < name.length; i++) {
+	for(var i = 0; i < name.length; i++) { // Create array of the path.
 		if(name.charAt(i) == "/") {
 			arr.push("");
 		} else {
@@ -178,7 +180,7 @@ function getStreamerName() {
 		}
 	}
 	
-	return arr[arr.length - 1];
+	return arr[arr.length - 1]; // Return the last path item.
 }
 
 function onMessageAdd(callback) {
