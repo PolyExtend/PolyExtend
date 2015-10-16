@@ -9,13 +9,36 @@ $("document").ready(function() {
 			".polyafter {" +
 				"display: none;" +
 			"}" +
+			
 			".message-author:hover .polyafter {" +
 				"display: inline-block;" +
+			"}" +
+			
+			"@keyframes polyspin {" +
+				"from {" +
+					"transform: none" +
+				"}" +
+				
+				"to {" +
+					"transform: rotate(360deg)" +
+				"}" +
+			"}" +
+			
+			".polyemote-spin {" +
+				"animation-name: polyspin;" +
+				"animation-duration: 2s;" +
+				"animation-iteration-count: infinite;" +
+			"}" +
+			
+			".polyemote-spin-fast {" +
+				"animation-name: polyspin;" +
+				"animation-duration: 0.5s;" +
+				"animation-iteration-count: infinite;" +
 			"}" +
 		"</style>"
 	);
 	
-	$("body").observe("added subtree characterdata", ".messages .nano-content>*", function() { // When a message is added...
+	$("body").observe("added", ".messages .nano-content>*", function() { // When a message is added...
 		if(!working) {
 			for(var i = 0; i < addevents.length; i++) { // Run each event function.
 				if(addevents[i]) {
