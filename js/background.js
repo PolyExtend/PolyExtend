@@ -1,5 +1,5 @@
 chrome.storage.sync.get("options", function(items) {
-	if(!items.options || Object.keys(items.options).length != 11) {
+	if(!items.options || Object.keys(items.options).length != 11) { // Reset options when upgrade/new install.
 		chrome.storage.sync.set({options: {
 			twitchemotes: true,
 			linkimages: true,
@@ -16,7 +16,7 @@ chrome.storage.sync.get("options", function(items) {
 	}
 });
 
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) { // Settings icon.
 	if(message == "showicon") {
 		chrome.pageAction.show(sender.tab.id);
 	}
