@@ -17,6 +17,7 @@
 				"js/main.js",
 				"js/beam.js",
 				
+				"js/feat/styles.js",
 				"js/feat/emotes.js",
 				"js/feat/images.js",
 				"js/feat/beamlink.js",
@@ -35,6 +36,7 @@
 				"js/main.js",
 				"js/twitch.js",
 				
+				"js/feat/styles.js",
 				"js/feat/emotes.js",
 				"js/feat/images.js",
 				"js/feat/beamlink.js",

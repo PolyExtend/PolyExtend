@@ -1,5 +1,7 @@
 onMessageAdd(function(name, message, id) {
-	var htmlized = $($.parseHTML("<div class='message-body'>" + message + "</div>")); // Make jQuery object from message text.
+	if(site == "beam") { // Make jQuery object from message text.
+		var htmlized = $($.parseHTML("<div class='message-body'>" + message + "</div>"));
+	}
 	
 	if(options.linkimages && htmlized.children("a").length > 0) {
 		for(var i = 0; i < htmlized.children("a").length; i++) { // For each <a> element...

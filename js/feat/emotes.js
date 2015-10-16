@@ -10,36 +10,40 @@ function addEmotes(message, emotes) {
 
 $.get("//extend.dinu.ga/emotes.json", function(emotes) {
 	onMessageAdd(function(name, message, id) { // Global emotes...
-		var toemotes = [];
-		
-		for(var i = 0; i < emotes.global.length; i++) {
-			toemotes.push([emotes.global[i], "//extend.dinu.ga/emotes/global/" + emotes.global[i] + ".png"]);
+		if(options.polyemotes) {
+			var toemotes = [];
+			
+			for(var i = 0; i < emotes.global.length; i++) {
+				toemotes.push([emotes.global[i], "//extend.dinu.ga/emotes/global/" + emotes.global[i] + ".png"]);
+			}
+			
+			var tomessage = addEmotes(message, toemotes);
+			replaceMessage(name, tomessage);
 		}
-		
-		var tomessage = addEmotes(message, toemotes);
-		replaceMessage(name, tomessage);
 	});
 	
 	onMessageAdd(function(name, message, id) { // User emotes...
-		var toemotes = [];
-		
-		for(var i = 0; i < Object.keys(emotes.user).length; i++) {
-			if(name.toLowerCase() == Object.keys(emotes.user)[i] ||
-			getStreamerName().toLowerCase() == Object.keys(emotes.user)[i]) {
-				for(var j = 0; j < emotes.user[Object.keys(emotes.user)[i]].length; j++) {
-					toemotes.push([emotes.user[Object.keys(emotes.user)[i]][j], "//extend.dinu.ga/emotes/user/" + Object.keys(emotes.user)[i] + "/" + emotes.user[Object.keys(emotes.user)[i]][j] + ".png"]);
+		if(options.polyemotes) {
+			var toemotes = [];
+			
+			for(var i = 0; i < Object.keys(emotes.user).length; i++) {
+				if(name.toLowerCase() == Object.keys(emotes.user)[i] ||
+				getStreamerName().toLowerCase() == Object.keys(emotes.user)[i]) {
+					for(var j = 0; j < emotes.user[Object.keys(emotes.user)[i]].length; j++) {
+						toemotes.push([emotes.user[Object.keys(emotes.user)[i]][j], "//extend.dinu.ga/emotes/user/" + Object.keys(emotes.user)[i] + "/" + emotes.user[Object.keys(emotes.user)[i]][j] + ".png"]);
+					}
 				}
 			}
+			
+			var tomessage = addEmotes(message, toemotes);
+			replaceMessage(name, tomessage);
 		}
-		
-		var tomessage = addEmotes(message, toemotes);
-		replaceMessage(name, tomessage);
 	});
 });
 
 $.get("//twitchemotes.com/api_cache/v2/global.json", function(emotes) {
 	onMessageAdd(function(name, message, id) { // Twitch emotes...
-		if(options.twitchemotes) {
+		if(options.twitchemotes && options.polyemotes) {
 			var toemotes = [];
 			
 			for(var i = 0; i < Object.keys(emotes.emotes).length; i++) {

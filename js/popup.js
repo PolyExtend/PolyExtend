@@ -6,8 +6,6 @@ $("document").ready(function() {
 		
 		$(".ch").click(function() { // Update option when it's clicked.
 			items.options[$(this).attr("id")] = $(this).prop("checked");
-			console.log(items);
-			console.log($(this).prop("checked"));
 			chrome.storage.sync.set(items);
 		});
 	});

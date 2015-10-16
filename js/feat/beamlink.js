@@ -9,7 +9,7 @@ onMessageAdd(function(name, message, id) {
 			);
 			
 			if(options.beamlinkcolor) { // Decorate username.
-				addBadge("http://www.twitch.tv/favicon.ico");
+				addBadge("//extend.dinu.ga/images/twitch.png");
 				addColor("#9b72ca");
 			}
 		}

@@ -35,6 +35,17 @@ $("document").ready(function() {
 				"animation-duration: 0.5s;" +
 				"animation-iteration-count: infinite;" +
 			"}" +
+			
+			".polythumb {" +
+				"position: absolute;" +
+				"top: 0;" +
+				"opacity: 1;" +
+				"transition: opacity 0.4s;" +
+			"}" +
+			
+			".channel-card:hover .polythumb {" +
+				"opacity: 0;" +
+			"}" +
 		"</style>"
 	);
 	
@@ -133,7 +144,7 @@ function getRanks() {
 	if(text.indexOf("Admin") > -1) {
 		ranks.push("admin");
 	}
-	if(text.indexOf("Dev") > -1) {
+	if(text.indexOf("Developer") > -1) {
 		ranks.push("dev");
 	}
 	if(text.indexOf("Pro") > -1) {
@@ -161,7 +172,7 @@ function setRanks(ranks) {
 			toranks.push("Admin");
 		}
 		if(ranks[i] == "dev") {
-			toranks.push("Dev");
+			toranks.push("Developer");
 		}
 		if(ranks[i] == "pro") {
 			toranks.push("Pro");
@@ -177,9 +188,15 @@ function setRanks(ranks) {
 	}
 	$(".message:last-child .message-author").html(name + "<div class='message-tooltip'>" + divranks + "</div>");
 	
+	var tagged = $(".message:last-child").hasClass("tagged"); // If the message is mentioning you.
+	
 	$(".message:last-child").removeClass().addClass("message fadeIn a-s-fast message-role-User"); // Add the classes.
 	for(var i = 0; i < toranks.length; i++) {
 		$(".message:last-child").addClass("message-role-" + toranks[i]);
+	}
+	
+	if(tagged) {
+		$(".message:last-child").addClass("tagged"); // Add the tagged class again.
 	}
 	
 	var danranks = ""; // Add stuff to data-role.
