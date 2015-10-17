@@ -1,4 +1,4 @@
-onMessageAdd(7, function(mut, name, message, id) {
+onMessageAdd(function(mut, name, message, id) {
 	if(options.showdeleted) {
 		
 	}

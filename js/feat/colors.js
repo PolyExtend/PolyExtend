@@ -1,4 +1,4 @@
-onMessageAdd(6, function(mut, name, message, id) {
+onMessageAdd(function(mut, name, message, id) {
 	if(options.colornames &&
 	(options.colornamesover || getRanks(mut).length == 0)) {
 		var old = parseInt(name, 36); // Turn name into a number.

@@ -8,50 +8,39 @@ function addEmotes(message, emotes) {
 	return message;
 }
 
-$.get("//extend.dinu.ga/emotes.json", function(emotes) {
-	onMessageAdd(0, function(mut, name, message, id) { // Global emotes...
-		if(options.polyemotes) {
-			var toemotes = [];
-			
-			for(var i = 0; i < emotes.global.length; i++) {
-				toemotes.push([emotes.global[i], "//extend.dinu.ga/emotes/global/" + emotes.global[i] + ".png"]);
-			}
-			
-			var tomessage = addEmotes(message, toemotes);
-			replaceMessage(mut, name, tomessage);
-		}
-	});
-	
-	onMessageAdd(1, function(mut, name, message, id) { // User emotes...
-		if(options.polyemotes) {
-			var toemotes = [];
-			
-			for(var i = 0; i < Object.keys(emotes.user).length; i++) {
-				if(name.toLowerCase() == Object.keys(emotes.user)[i] ||
-				getStreamerName().toLowerCase() == Object.keys(emotes.user)[i]) {
-					for(var j = 0; j < emotes.user[Object.keys(emotes.user)[i]].length; j++) {
-						toemotes.push([emotes.user[Object.keys(emotes.user)[i]][j], "//extend.dinu.ga/emotes/user/" + Object.keys(emotes.user)[i] + "/" + emotes.user[Object.keys(emotes.user)[i]][j] + ".png"]);
-					}
-				}
-			}
-			
-			var tomessage = addEmotes(message, toemotes);
-			replaceMessage(mut, name, tomessage);
-		}
-	});
+var applyEmotesEvent = function() {};
+onMessageAdd(function(mut, name, message, id) {
+	applyEmotesEvent(mut, name, message, id);
 });
 
-$.get("//twitchemotes.com/api_cache/v2/global.json", function(emotes) {
-	onMessageAdd(2, function(mut, name, message, id) { // Twitch emotes...
-		if(options.twitchemotes && options.polyemotes) {
-			var toemotes = [];
-			
-			for(var i = 0; i < Object.keys(emotes.emotes).length; i++) {
-				toemotes.push([Object.keys(emotes.emotes)[i], "//static-cdn.jtvnw.net/emoticons/v1/" + emotes.emotes[Object.keys(emotes.emotes)[i]].image_id + "/1.0"]);
+$.get("//twitchemotes.com/api_cache/v2/global.json", function(twitchemotes) {
+	$.get("//extend.dinu.ga/emotes.json", function(emotes) {
+		applyEmotesEvent = function(mut, name, message, id) {
+			if(options.polyemotes) {
+				var toemotes = [];
+				
+				for(var i = 0; i < emotes.global.length; i++) { // Global emotes...
+					toemotes.push([emotes.global[i], "//extend.dinu.ga/emotes/global/" + emotes.global[i] + ".png"]);
+				}
+				
+				for(var i = 0; i < Object.keys(emotes.user).length; i++) { // User emotes...
+					if(name.toLowerCase() == Object.keys(emotes.user)[i] ||
+					getStreamerName().toLowerCase() == Object.keys(emotes.user)[i]) {
+						for(var j = 0; j < emotes.user[Object.keys(emotes.user)[i]].length; j++) {
+							toemotes.push([emotes.user[Object.keys(emotes.user)[i]][j], "//extend.dinu.ga/emotes/user/" + Object.keys(emotes.user)[i] + "/" + emotes.user[Object.keys(emotes.user)[i]][j] + ".png"]);
+						}
+					}
+				}
+				
+				if(options.twitchemotes) {
+					for(var i = 0; i < Object.keys(twitchemotes.emotes).length; i++) { // Twitch emotes...
+						toemotes.push([Object.keys(twitchemotes.emotes)[i], "//static-cdn.jtvnw.net/emoticons/v1/" + twitchemotes.emotes[Object.keys(twitchemotes.emotes)[i]].image_id + "/1.0"]);
+					}
+				}
+				
+				var tomessage = addEmotes(message, toemotes);
+				replaceMessage(mut, name, tomessage);
 			}
-			
-			var tomessage = addEmotes(message, toemotes);
-			replaceMessage(mut, name, tomessage);
-		}
+		};
 	});
 });

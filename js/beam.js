@@ -226,13 +226,11 @@ function getStreamerName() {
 	return arr[arr.length - 1]; // Return the last path item.
 }
 
-function onMessageAdd(num, callback) {
-	// return addevents.push(callback) - 1;
-	addevents[num] = callback;
+function onMessageAdd(callback) {
+	return addevents.push(callback) - 1;
 }
-function onMessageRemove(num, callback) {
-	// return delevents.push(callback) - 1;
-	delevents[num] = callback;
+function onMessageRemove(callback) {
+	return delevents.push(callback) - 1;
 }
 
 function offMessageAdd(num) {
