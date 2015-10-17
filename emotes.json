@@ -10,6 +10,9 @@
 			"rng",
 			"Sethpa"
 		],
-		"trominode": "tromino"
+		"trominode": "tromino",
+		"bacon_space": [
+			"heart"
+		],
 	}
 }
