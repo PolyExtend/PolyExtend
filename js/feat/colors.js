@@ -1,6 +1,6 @@
-onMessageAdd(function(name, message, id) {
+onMessageAdd(6, function(mut, name, message, id) {
 	if(options.colornames &&
-	(options.colornamesover || getRanks().length == 0)) {
+	(options.colornamesover || getRanks(mut).length == 0)) {
 		var old = parseInt(name, 36); // Turn name into a number.
 		
 		var num1 = bigInt(Math.floor(old * 548.624373957303)); // Turn them into bigInts.
@@ -16,6 +16,6 @@ onMessageAdd(function(name, message, id) {
 		var part3 = num3.minus(num3.divide(192).times(192)).plus(64);
 		var color3 = part3.toString(16);
 		
-		addColor("#" + color1 + color2 + color3); // Add combined color.
+		addColor(mut, "#" + color1 + color2 + color3); // Add combined color.
 	}
 });

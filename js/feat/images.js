@@ -1,4 +1,4 @@
-onMessageAdd(function(name, message, id) {
+onMessageAdd(3, function(mut, name, message, id) {
 	if(site == "beam") { // Make jQuery object from message text.
 		var htmlized = $($.parseHTML("<div class='message-body'>" + message + "</div>"));
 	}
@@ -15,6 +15,6 @@ onMessageAdd(function(name, message, id) {
 			}
 		}
 		
-		replaceMessage(name, htmlized.html());
+		replaceMessage(mut, name, htmlized.html());
 	}
 });

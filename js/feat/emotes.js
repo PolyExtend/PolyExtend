@@ -9,7 +9,7 @@ function addEmotes(message, emotes) {
 }
 
 $.get("//extend.dinu.ga/emotes.json", function(emotes) {
-	onMessageAdd(function(name, message, id) { // Global emotes...
+	onMessageAdd(0, function(mut, name, message, id) { // Global emotes...
 		if(options.polyemotes) {
 			var toemotes = [];
 			
@@ -18,11 +18,11 @@ $.get("//extend.dinu.ga/emotes.json", function(emotes) {
 			}
 			
 			var tomessage = addEmotes(message, toemotes);
-			replaceMessage(name, tomessage);
+			replaceMessage(mut, name, tomessage);
 		}
 	});
 	
-	onMessageAdd(function(name, message, id) { // User emotes...
+	onMessageAdd(1, function(mut, name, message, id) { // User emotes...
 		if(options.polyemotes) {
 			var toemotes = [];
 			
@@ -36,13 +36,13 @@ $.get("//extend.dinu.ga/emotes.json", function(emotes) {
 			}
 			
 			var tomessage = addEmotes(message, toemotes);
-			replaceMessage(name, tomessage);
+			replaceMessage(mut, name, tomessage);
 		}
 	});
 });
 
 $.get("//twitchemotes.com/api_cache/v2/global.json", function(emotes) {
-	onMessageAdd(function(name, message, id) { // Twitch emotes...
+	onMessageAdd(2, function(mut, name, message, id) { // Twitch emotes...
 		if(options.twitchemotes && options.polyemotes) {
 			var toemotes = [];
 			
@@ -51,7 +51,7 @@ $.get("//twitchemotes.com/api_cache/v2/global.json", function(emotes) {
 			}
 			
 			var tomessage = addEmotes(message, toemotes);
-			replaceMessage(name, tomessage);
+			replaceMessage(mut, name, tomessage);
 		}
 	});
 });

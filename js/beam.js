@@ -39,6 +39,7 @@ $("document").ready(function() {
 			".polythumb {" +
 				"position: absolute;" +
 				"top: 0;" +
+				"left: 0;" +
 				"opacity: 1;" +
 				"transition: opacity 0.4s;" +
 			"}" +
@@ -49,20 +50,22 @@ $("document").ready(function() {
 		"</style>"
 	);
 	
-	$("body").observe("added", ".messages .nano-content>*", function() { // When a message is added...
+	$("body").observe("added", ".messages .nano-content .message", function(mut) { // When a message is added...
 		if(!working) {
 			for(var i = 0; i < addevents.length; i++) { // Run each event function.
 				if(addevents[i]) {
-					var name = $(".message:last-child .message-author").clone().children().remove().end().text();
-					var message = $(".message:last-child .message-body").html();
-					var id = $(".message:last-child").attr("id");
-					
-					addevents[i](name, message, id);
+					for(var j = 0; j < mut.addedNodes.length; j++) {
+						var name = $(mut.addedNodes[j]).find(".message-author").clone().children().remove().end().text();
+						var message = $(mut.addedNodes[j]).find(".message-body").html();
+						var id = $(mut.addedNodes[j]).attr("id");
+						
+						addevents[i]($(mut.addedNodes[j]), name, message, id);
+					}
 				}
 			}
 		}
 	});
-	$("body").observe("removed", ".messages .nano-content>*", function() { // When a message is removed...
+	$("body").observe("removed", ".messages .nano-content .message", function() { // When a message is removed...
 		if(!working) {
 			for(var i = 0; i < delevents.length; i++) { // Run each event function.
 				if(delevents[i]) {
@@ -97,42 +100,42 @@ function addMessage(name, message, id) {
 	
 	working = false;
 }
-function replaceMessage(name, message) {
+function replaceMessage(mut, name, message) {
 	working = true;
-	var ranks = getRanks(); // Get ranks since the name will be replaced.
+	var ranks = getRanks(mut); // Get ranks since the name will be replaced.
 	
-	$(".message:last-child .message-author").html(name);
-	$(".message:last-child .message-body").html(message);
+	mut.find(".message-author").html(name);
+	mut.find(".message-body").html(message);
 	
-	setRanks(ranks); // Add ranks back.
+	setRanks(mut, ranks); // Add ranks back.
 	working = false;
 }
-function removeMessage() {
+function removeMessage(mut) {
 	working = true;
-	$(".message:last-child").remove();
+	mut.remove();
 	working = false;
 }
 
-function addColor(color) {
+function addColor(mut, color) {
 	working = true;
-	$(".message:last-child .message-author").css("color", color);
+	mut.find(".message-author").css("color", color);
 	working = false;
 }
-function addBadge(image) {
+function addBadge(mut, image) {
 	working = true;
 	
-	if($(".message:last-child .message-author").hasClass("polyfirst")) { // Give all badges except one the "polyafter" class.
-		$(".message:last-child .message-author").prepend("<img src='" + image + "' class='polyafter' style='margin-right: 6px; width: 16px; height: 16px;'>");
+	if(mut.find(".message-author").hasClass("polyfirst")) { // Give all badges except one the "polyafter" class.
+		mut.find(".message-author").prepend("<img src='" + image + "' class='polyafter' style='margin-right: 6px; width: 16px; height: 16px;'>");
 	} else {
-		$(".message:last-child .message-author").addClass("polyfirst");
-		$(".message:last-child .message-author").prepend("<img src='" + image + "' style='margin-right: 6px; width: 16px; height: 16px;'>");
+		mut.find(".message-author").addClass("polyfirst");
+		mut.find(".message-author").prepend("<img src='" + image + "' style='margin-right: 6px; width: 16px; height: 16px;'>");
 	}
 	
 	working = false;
 }
 
-function getRanks() {
-	var text = $(".message:last-child .message-tooltip").text(); // Get the ranks from the tooltip text.
+function getRanks(mut) {
+	var text = mut.find(".message-tooltip").text(); // Get the ranks from the tooltip text.
 	var ranks = [];
 	
 	if(text.indexOf("Owner") > -1) { // Replace rank names and return them.
@@ -156,9 +159,9 @@ function getRanks() {
 	
 	return ranks;
 }
-function setRanks(ranks) {
+function setRanks(mut, ranks) {
 	working = true;
-	var name = $(".message:last-child .message-author").clone().children().remove().end().text(); // Get name without any HTML.
+	var name = mut.find(".message-author").clone().children().remove().end().text(); // Get name without any HTML.
 	var toranks = [];
 	
 	for(var i = 0; i < ranks.length; i++) { // Change the names back to what Beam uses.
@@ -186,24 +189,24 @@ function setRanks(ranks) {
 	for(var i = 0; i < toranks.length; i++) {
 		divranks += "<span class='text-role text-role-" + toranks[i] + "'>" + toranks[i] + "</span>";
 	}
-	$(".message:last-child .message-author").html(name + "<div class='message-tooltip'>" + divranks + "</div>");
+	mut.find(".message-author").html(name + "<div class='message-tooltip'>" + divranks + "</div>");
 	
-	var tagged = $(".message:last-child").hasClass("tagged"); // If the message is mentioning you.
+	var tagged = mut.hasClass("tagged"); // If the message is mentioning you.
 	
-	$(".message:last-child").removeClass().addClass("message fadeIn a-s-fast message-role-User"); // Add the classes.
+	mut.removeClass().addClass("message fadeIn a-s-fast message-role-User"); // Add the classes.
 	for(var i = 0; i < toranks.length; i++) {
-		$(".message:last-child").addClass("message-role-" + toranks[i]);
+		mut.addClass("message-role-" + toranks[i]);
 	}
 	
 	if(tagged) {
-		$(".message:last-child").addClass("tagged"); // Add the tagged class again.
+		mut.addClass("tagged"); // Add the tagged class again.
 	}
 	
 	var danranks = ""; // Add stuff to data-role.
 	for(var i = 0; i < toranks.length; i++) {
 		danranks += toranks[i] + "|";
 	}
-	$(".message:last-child").attr("data-role", danranks + "User");
+	mut.attr("data-role", danranks + "User");
 	
 	working = false;
 }
@@ -223,11 +226,13 @@ function getStreamerName() {
 	return arr[arr.length - 1]; // Return the last path item.
 }
 
-function onMessageAdd(callback) {
-	return addevents.push(callback) - 1;
+function onMessageAdd(num, callback) {
+	// return addevents.push(callback) - 1;
+	addevents[num] = callback;
 }
-function onMessageRemove(callback) {
-	return delevents.push(callback) - 1;
+function onMessageRemove(num, callback) {
+	// return delevents.push(callback) - 1;
+	delevents[num] = callback;
 }
 
 function offMessageAdd(num) {
