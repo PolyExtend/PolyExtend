@@ -1,8 +1,7 @@
 {
 	"global": [
 		"Mappa",
-		"Wat",
-		"mlgZebra"
+		"Wat"
 	],
 	"user": {
 		"tromino": [
