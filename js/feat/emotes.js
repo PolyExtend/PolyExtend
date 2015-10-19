@@ -1,8 +1,16 @@
 function addEmotes(message, emotes) {
-	for(var i = 0; i < emotes.length; i++) { // Replace for each emote in array.
-		message = message.replace(new RegExp(":" + emotes[i][0] + "\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote' title=':" + emotes[i][0] + "'>");
-		message = message.replace(new RegExp(":" + emotes[i][0] + "Spin\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin' title=':" + emotes[i][0] + "Spin'>");
-		message = message.replace(new RegExp(":" + emotes[i][0] + "Wheel\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin-fast' title=':" + emotes[i][0] + "Wheel'>");
+	if(site == "beam") {
+		for(var i = 0; i < emotes.length; i++) { // Replace for each emote in array.
+			message = message.replace(new RegExp(":" + emotes[i][0] + "\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote' title=':" + emotes[i][0] + "'>");
+			message = message.replace(new RegExp(":" + emotes[i][0] + "Spin\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin' title=':" + emotes[i][0] + "Spin'>");
+			message = message.replace(new RegExp(":" + emotes[i][0] + "Wheel\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin-fast' title=':" + emotes[i][0] + "Wheel'>");
+		}
+	} else if(site == "twitch") {
+		for(var i = 0; i < emotes.length; i++) { // Replace for each emote in array.
+			message = message.replace(new RegExp("\\b" + emotes[i][0] + "\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote' title=':" + emotes[i][0] + "'>");
+			message = message.replace(new RegExp("\\b" + emotes[i][0] + "Spin\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin' title=':" + emotes[i][0] + "Spin'>");
+			message = message.replace(new RegExp("\\b" + emotes[i][0] + "Wheel\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin-fast' title=':" + emotes[i][0] + "Wheel'>");
+		}
 	}
 	
 	return message;
@@ -39,7 +47,9 @@ $.get("//twitchemotes.com/api_cache/v2/global.json", function(twitchemotes) {
 				}
 				
 				var tomessage = addEmotes(message, toemotes);
-				replaceMessage(mut, name, tomessage);
+				if(tomessage != message) {
+					replaceMessage(mut, name, tomessage);
+				}
 			}
 		};
 	});

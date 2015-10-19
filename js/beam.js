@@ -55,7 +55,7 @@ $("document").ready(function() {
 			for(var i = 0; i < addevents.length; i++) { // Run each event function.
 				if(addevents[i]) {
 					for(var j = 0; j < mut.addedNodes.length; j++) {
-						var name = $(mut.addedNodes[j]).find(".message-author").clone().children().remove().end().text();
+						var name = $(mut.addedNodes[j]).find(".message-author").clone().children().remove().end().html();
 						var message = $(mut.addedNodes[j]).find(".message-body").html();
 						var id = $(mut.addedNodes[j]).attr("id");
 						
@@ -161,7 +161,7 @@ function getRanks(mut) {
 }
 function setRanks(mut, ranks) {
 	working = true;
-	var name = mut.find(".message-author").clone().children().remove().end().text(); // Get name without any HTML.
+	var name = mut.find(".message-author").clone().children().remove().end().html(); // Get name without any HTML.
 	var toranks = [];
 	
 	for(var i = 0; i < ranks.length; i++) { // Change the names back to what Beam uses.
