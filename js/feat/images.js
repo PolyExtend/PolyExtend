@@ -1,7 +1,5 @@
 onMessageAdd(function(mut, name, message, id) {
-	if(site == "beam") { // Make jQuery object from message text.
-		var htmlized = $($.parseHTML("<div class='message-body'>" + message + "</div>"));
-	}
+	var htmlized = $($.parseHTML("<div>" + message + "</div>")); // Make jQuery object from message text.
 	
 	if(options.linkimages && htmlized.children("a").length > 0) {
 		for(var i = 0; i < htmlized.children("a").length; i++) { // For each <a> element...
