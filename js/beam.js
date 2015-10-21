@@ -50,7 +50,7 @@ $("document").ready(function() {
 		"</style>"
 	);
 	
-	$("body").observe("added", ".messages .nano-content .message", function(mut) { // When a message is added...
+	$("body").observe("added", ".message", function(mut) { // When a message is added...
 		if(!working) {
 			for(var i = 0; i < addevents.length; i++) { // Run each event function.
 				if(addevents[i]) {

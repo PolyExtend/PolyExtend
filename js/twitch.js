@@ -4,53 +4,41 @@ var addevents = []; // Arrays for functions to be run for message events.
 var delevents = [];
 
 $("document").ready(function() {
-	// $("head").append(
-	// 	"<style>" +
-	// 		".polyafter {" +
-	// 			"display: none;" +
-	// 		"}" +
+	$("head").append(
+		"<style>" +
+			".polyafter {" +
+				"display: none;" +
+			"}" +
 			
-			// ".from:hover .polyafter {" +
-			// 	"display: inline-block;" +
-			// "}" +
+			".from:hover .polyafter {" +
+				"display: inline-block;" +
+			"}" +
 			
-			// "@keyframes polyspin {" +
-			// 	"from {" +
-			// 		"transform: none" +
-			// 	"}" +
+			"@keyframes polyspin {" +
+				"from {" +
+					"transform: none" +
+				"}" +
 				
-			// 	"to {" +
-			// 		"transform: rotate(360deg)" +
-			// 	"}" +
-			// "}" +
+				"to {" +
+					"transform: rotate(360deg)" +
+				"}" +
+			"}" +
 			
-			// ".polyemote-spin {" +
-			// 	"animation-name: polyspin;" +
-			// 	"animation-duration: 2s;" +
-			// 	"animation-iteration-count: infinite;" +
-			// "}" +
+			".polyemote-spin {" +
+				"animation-name: polyspin;" +
+				"animation-duration: 2s;" +
+				"animation-iteration-count: infinite;" +
+			"}" +
 			
-			// ".polyemote-spin-fast {" +
-			// 	"animation-name: polyspin;" +
-			// 	"animation-duration: 0.5s;" +
-			// 	"animation-iteration-count: infinite;" +
-			// "}" +
-			
-			// ".polythumb {" +
-			// 	"position: absolute;" +
-			// 	"top: 0;" +
-			// 	"left: 0;" +
-			// 	"opacity: 1;" +
-			// 	"transition: opacity 0.4s;" +
-			// "}" +
-			
-	// 		".channel-card:hover .polythumb {" +
-	// 			"opacity: 0;" +
-	// 		"}" +
-	// 	"</style>"
-	// );
+			".polyemote-spin-fast {" +
+				"animation-name: polyspin;" +
+				"animation-duration: 0.5s;" +
+				"animation-iteration-count: infinite;" +
+			"}" +
+		"</style>"
+	);
 	
-	$("body").observe("added", ".chat-lines .chat-line", function(mut) { // When a message is added...
+	$("body").observe("added", ".chat-line", function(mut) { // When a message is added...
 		if(!working) {
 			for(var i = 0; i < addevents.length; i++) { // Run each event function.
 				if(addevents[i]) {
@@ -125,10 +113,10 @@ function addBadge(mut, image) {
 	working = true;
 	
 	if(mut.find(".badges").hasClass("polyfirst")) { // Give all badges except one the "polyafter" class.
-		mut.find(".badges").prepend("<img src='" + image + "' class='badge float-left polyafter' style='width: 16px; height: 16px;'>");
+		mut.find(".badges").prepend("<img src='" + image + "' class='badge float-left polyafter' style='padding: 1px 0; min-width: 16px; height: 16px;'>");
 	} else {
 		mut.find(".badges").addClass("polyfirst");
-		mut.find(".badges").prepend("<img src='" + image + "' class='badge float-left' style='width: 16px; height: 16px;'>");
+		mut.find(".badges").prepend("<img src='" + image + "' class='badge float-left' style='padding: 1px 0; min-width: 16px; height: 16px;'>");
 	}
 	
 	working = false;
