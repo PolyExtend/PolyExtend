@@ -53,6 +53,11 @@
 			"kirby"
 		]
 	},
+    "GameFruit": {
+        "members": [
+            "lite20"
+        ]
+    },
 	"TheSpaceArmy Member": {
 		"members": [
 			"homelesmidgets",
