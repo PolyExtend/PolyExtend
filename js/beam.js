@@ -52,17 +52,21 @@ $("document").ready(function() {
 	
 	$("body").observe("added", ".message", function(mut) { // When a message is added...
 		if(!working) {
-			for(var i = 0; i < addevents.length; i++) { // Run each event function.
-				if(addevents[i]) {
-					for(var j = 0; j < mut.addedNodes.length; j++) {
-						var name = $(mut.addedNodes[j]).find(".message-author").clone().children().remove().end().html();
-						var message = $(mut.addedNodes[j]).find(".message-body").html();
-						var id = $(mut.addedNodes[j]).attr("id");
-						
-						addevents[i]($(mut.addedNodes[j]), name, message, id);
+			setTimeout(function() { // Temporary fix for emotes.
+				for(var i = 0; i < addevents.length; i++) { // Run each event function.
+					if(addevents[i]) {
+						for(var j = 0; j < mut.addedNodes.length; j++) {
+							if($(mut.addedNodes[j]).hasClass("message")) {
+								var name = $(mut.addedNodes[j]).find(".message-author").clone().children().remove().end().html();
+								var message = $(mut.addedNodes[j]).find(".message-body").html();
+								var id = $(mut.addedNodes[j]).attr("id");
+								
+								addevents[i]($(mut.addedNodes[j]), name, message, id);
+							}
+						}
 					}
 				}
-			}
+			}, 200);
 		}
 	});
 	$("body").observe("removed", ".messages .nano-content .message", function() { // When a message is removed...
