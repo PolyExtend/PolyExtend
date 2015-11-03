@@ -6,12 +6,12 @@ var delevents = [];
 $("document").ready(function() {
 	$("head").append(
 		"<style>" +
-			".polyafter {" +
-				"display: none;" +
+			".badge {" +
+				"display: none !important;" +
 			"}" +
 			
-			".from:hover .polyafter {" +
-				"display: inline-block;" +
+			".badges:hover .badge, .badge:last-of-type {" +
+				"display: inline-block !important;" +
 			"}" +
 			
 			"@keyframes polyspin {" +
@@ -38,26 +38,32 @@ $("document").ready(function() {
 		"</style>"
 	);
 	
-	$("body").observe("added", ".chat-line", function(mut) { // When a message is added...
+	$("body").observe("added", ".chat-lines > .ember-view", function(mut) { // When a message is added...
 		if(!working) {
 			for(var i = 0; i < addevents.length; i++) { // Run each event function.
 				if(addevents[i]) {
 					for(var j = 0; j < mut.addedNodes.length; j++) {
-						var name = $(mut.addedNodes[j]).find(".from").html();
-						var message = $(mut.addedNodes[j]).find(".message").html();
-						var id = $(mut.addedNodes[j]).attr("id");
-						
-						addevents[i]($(mut.addedNodes[j]), name, message, id);
+						if($(mut.addedNodes[j]).hasClass("ember-view")) {
+							var name = $(mut.addedNodes[j]).find(".from").html();
+							var message = $(mut.addedNodes[j]).find(".message").html();
+							var id = $(mut.addedNodes[j]).attr("id");
+							
+							addevents[i]($(mut.addedNodes[j]), name, message, id);
+						}
 					}
 				}
 			}
 		}
 	});
-	$("body").observe("removed", ".chat-lines .chat-line", function() { // When a message is removed...
+	$("body").observe("removed", ".chat-lines > .ember-view", function(mut) { // When a message is removed...
 		if(!working) {
 			for(var i = 0; i < delevents.length; i++) { // Run each event function.
 				if(delevents[i]) {
-					delevents[i]();
+					for(var j = 0; j < mut.removedNodes.length; j++) {
+						if($(mut.removedNodes[j]).hasClass("ember-view")) {
+							delevents[i]($(mut.removedNodes[j]));
+						}
+					}
 				}
 			}
 		}
@@ -109,16 +115,9 @@ function addColor(mut, color) {
 	mut.find(".from").css("color", color);
 	working = false;
 }
-function addBadge(mut, image) {
+function addBadge(mut, title, color, image) {
 	working = true;
-	
-	if(mut.find(".badges").hasClass("polyfirst")) { // Give all badges except one the "polyafter" class.
-		mut.find(".badges").prepend("<img src='" + image + "' class='badge float-left polyafter' style='padding: 1px 0; min-width: 16px; height: 16px;'>");
-	} else {
-		mut.find(".badges").addClass("polyfirst");
-		mut.find(".badges").prepend("<img src='" + image + "' class='badge float-left' style='padding: 1px 0; min-width: 16px; height: 16px;'>");
-	}
-	
+	mut.find(".badges").prepend("<img src='" + image + "' class='badge float-left tooltip' original-title='" + title + "' style='padding: 1px 0; min-width: 16px; height: 16px;'>");
 	working = false;
 }
 

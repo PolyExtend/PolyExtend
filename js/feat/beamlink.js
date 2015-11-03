@@ -10,8 +10,13 @@ onMessageAdd(function(mut, name, message, id) {
 			);
 			
 			if(options.beamlinkcolor) { // Decorate username.
-				addBadge(mut, "//extend.dinu.ga/images/twitch.png");
-				addColor(mut, "#9b72ca");
+				if(site == "beam") {
+					addBadge(mut, "Twitch", "#9b72ca", "//extend.dinu.ga/images/twitch.png");
+					addColor(mut, "#9b72ca");
+				} else if(site == "twitch") {
+					addBadge(mut, "Beam", "#37e4ee", "//extend.dinu.ga/images/beam.png");
+					addColor(mut, "#37e4ee");
+				}
 			}
 		}
 	}

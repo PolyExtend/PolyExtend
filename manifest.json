@@ -19,6 +19,7 @@
 				
 				"js/feat/styles.js",
 				"js/feat/thumbnails.js",
+				"js/feat/mentions.js",
 				"js/feat/emotes.js",
 				"js/feat/images.js",
 				
@@ -41,6 +42,7 @@
 				
 				"js/feat/styles.js",
 				"js/feat/thumbnails.js",
+				"js/feat/mentions.js",
 				"js/feat/emotes.js",
 				"js/feat/images.js",
 				

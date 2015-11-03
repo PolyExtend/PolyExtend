@@ -6,11 +6,11 @@ var delevents = [];
 $("document").ready(function() {
 	$("head").append(
 		"<style>" +
-			".polyafter {" +
+			".message-author img {" +
 				"display: none;" +
 			"}" +
 			
-			".message-author:hover .polyafter {" +
+			".message-author:hover img, .message-author img:last-of-type {" +
 				"display: inline-block;" +
 			"}" +
 			
@@ -52,28 +52,30 @@ $("document").ready(function() {
 	
 	$("body").observe("added", ".message", function(mut) { // When a message is added...
 		if(!working) {
-			setTimeout(function() { // Temporary fix for emotes.
-				for(var i = 0; i < addevents.length; i++) { // Run each event function.
-					if(addevents[i]) {
-						for(var j = 0; j < mut.addedNodes.length; j++) {
-							if($(mut.addedNodes[j]).hasClass("message")) {
-								var name = $(mut.addedNodes[j]).find(".message-author").clone().children().remove().end().html();
-								var message = $(mut.addedNodes[j]).find(".message-body").html();
-								var id = $(mut.addedNodes[j]).attr("id");
-								
-								addevents[i]($(mut.addedNodes[j]), name, message, id);
-							}
+			for(var i = 0; i < addevents.length; i++) { // Run each event function.
+				if(addevents[i]) {
+					for(var j = 0; j < mut.addedNodes.length; j++) {
+						if($(mut.addedNodes[j]).hasClass("message")) {
+							var name = $(mut.addedNodes[j]).find(".message-author").clone().children().remove().end().html();
+							var message = $(mut.addedNodes[j]).find(".message-body").html();
+							var id = $(mut.addedNodes[j]).attr("id");
+							
+							addevents[i]($(mut.addedNodes[j]), name, message, id);
 						}
 					}
 				}
-			}, 200);
+			}
 		}
 	});
-	$("body").observe("removed", ".messages .nano-content .message", function() { // When a message is removed...
+	$("body").observe("removed", ".message", function(mut) { // When a message is removed...
 		if(!working) {
 			for(var i = 0; i < delevents.length; i++) { // Run each event function.
 				if(delevents[i]) {
-					delevents[i]();
+					for(var j = 0; j < mut.removedNodes.length; j++) {
+						if($(mut.removedNodes[j]).hasClass("message")) {
+							delevents[i]($(mut.removedNodes[j]));
+						}
+					}
 				}
 			}
 		}
@@ -125,14 +127,23 @@ function addColor(mut, color) {
 	mut.find(".message-author").css("color", color);
 	working = false;
 }
-function addBadge(mut, image) {
+function addBadge(mut, title, color, image) {
 	working = true;
 	
-	if(mut.find(".message-author").hasClass("polyfirst")) { // Give all badges except one the "polyafter" class.
-		mut.find(".message-author").prepend("<img src='" + image + "' class='polyafter' style='margin-right: 6px; width: 16px; height: 16px;'>");
+	mut.find(".message-author").prepend("<img src='" + image + "' style='margin-right: 6px; width: 16px; height: 16px;'>");
+	
+	if(!mut.find(".message-tooltip").length) { // Add a tooltip if there is none.
+		mut.find(".message-author").append("<div class='message-tooltip'></div>");
+	}
+	
+	if(color) { // Add team to the tooltip.
+		mut.find(".message-tooltip").append(
+			"<span class='text-role text-role-Poly' style='color: " + color + "'>" + title + "</span>"
+		);
 	} else {
-		mut.find(".message-author").addClass("polyfirst");
-		mut.find(".message-author").prepend("<img src='" + image + "' style='margin-right: 6px; width: 16px; height: 16px;'>");
+		mut.find(".message-tooltip").append(
+			"<span class='text-role text-role-Poly'>" + title + "</span>"
+		);
 	}
 	
 	working = false;
