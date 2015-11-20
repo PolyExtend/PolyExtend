@@ -9,14 +9,15 @@
 		]
 	},
 	"Bot": {
-		"color": "#c74d19",
+		"color": "#e35813",
 		"members": [
 			"ultimatebanhammer",
-			"tsabot",
 			"benhammer",
+			"sauceben",
+			"good",
+			"tsabot",
 			"cwhite",
 			"pybot",
-			"good",
 			"fozzbot",
 			"joshua",
 			"chikari",
@@ -24,12 +25,12 @@
 			"nightbot",
 			"blipbot",
 			"benbot",
-			"sauceben",
 			"moobot",
 			"overlord",
 			"homes_bot",
 			"shubot",
 			"martybot",
+			"powerflare",
 			"jamybot",
 			"tacobot",
 			"lightbot",
@@ -52,11 +53,6 @@
 			"kirby"
 		]
 	},
-    "GameFruit": {
-        "members": [
-            "lite20"
-        ]
-    },
 	"TheSpaceArmy Member": {
 		"members": [
 			"homelesmidgets",
