@@ -60,7 +60,13 @@ $("document").ready(function() {
 							var message = $(mut.addedNodes[j]).find(".message-body").html();
 							var id = $(mut.addedNodes[j]).attr("id");
 							
-							addevents[i]($(mut.addedNodes[j]), name, message, id);
+							if($(mut.addedNodes[j]).attr("id").indexOf("temp") < 0) {
+								addevents[i]($(mut.addedNodes[j]), name, message, id);
+							} else {
+								setTimeout(function(addevents, i, mut, j, name, message, id) {
+									addevents[i]($(mut.addedNodes[j]), name, message, id);
+								}.bind(this, addevents, i, mut, j, name, message, id), 500);
+							}
 						}
 					}
 				}
