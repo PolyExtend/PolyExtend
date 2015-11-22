@@ -1,5 +1,6 @@
 {
 	"PolyDev Member": {
+		"color": "#15ebd2",
 		"members": [
 			"tromino",
 			"trominode",
@@ -16,6 +17,7 @@
 			"benhammer",
 			"sauceben",
 			"good",
+			"steve",
 			"benbot",
 			"tsabot",
 			"mr_wwax",
@@ -57,7 +59,8 @@
 			"darpybutt",
 			"fluffy",
 			"cubbbot",
-			"kirby"
+			"kirby",
+			"gravybot"
 		]
 	},
 	"TheSpaceArmy Member": {
@@ -87,7 +90,6 @@
 			"zacw1994",
 			"thatblueninja",
 			"auruyn",
-			"fozz",
 			"cwhitemaster99",
 			"themcgamer",
 			"sezzawatches",
@@ -108,6 +110,25 @@
 			"kylelehman55"
 		]
 	},
+	"BadAtGaming Member": {
+		"color": "#9b59b6",
+		"members": [
+			"igamersteven",
+			"bacon_space",
+			"zecron",
+			"officialyawsome",
+			"badatgaming_",
+			"mcthecave",
+			"redgreen125",
+			"nowoot",
+			"mikeysgames",
+			"mchanka",
+			"darpybutt",
+			"hedgehogs_r_awesome_6543",
+			"hedgeyebot",
+			"badatgaming"
+		]
+	},
 	"Variety Gamers Member": {
 		"members": [
 			"bacon_space",
@@ -126,7 +147,6 @@
 			"xdivineclownx",
 			"profoundgames",
 			"ovowls",
-			"fozz",
 			"roshugaming",
 			"roshu666",
 			"varietygamers",
