@@ -20,8 +20,30 @@
 			"pedo",
 			"tired"
 		],
+		"homelesmidgets": [
+			"homeGG",
+			"homeHype",
+			"homeKappa",
+			"homeLove",
+			"homeRage",
+			"homeRekt"
+		],
+		"thespacearmy": [
+			"homeGG",
+			"homeHype",
+			"homeKappa",
+			"homeLove",
+			"homeRage",
+			"homeRekt"
+		],
 		"bacon_space": [
-			"heart"
+			"heart",
+			"homeGG",
+			"homeHype",
+			"homeKappa",
+			"homeLove",
+			"homeRage",
+			"homeRekt"
 		]
 	}
 }
