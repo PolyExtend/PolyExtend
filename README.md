@@ -1,2 +1,13 @@
-# [PolyExtend](https://surl.im/polychrome)
-PolyExtend is a browser extension for Beam and Twitch which adds things like custom channel emotes, randomized name colors, and a BeamLink beautifier.
+# ![](icon-48.png) PolyExtend
+
+### [Download for Chrome](https://surl.im/polychrome)
+
+PolyExtend is a browser extension which adds extra features and tweaks to the live streaming websites Twitch and Beam.
+
+Some of the features it adds:
+- Twitch emotes on Beam
+- Custom channel emotes for non-partners
+- Message beautifier for BeamLink
+- Randomized username colors
+- Dark theme (Beam only)
+- Show uploaded channel thumbnails (Beam only)
