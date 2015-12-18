@@ -1,4 +1,4 @@
-# ![](https://github.com/Tromino/PolyExtend/raw/master/icon-48.png) PolyExtend
+# ![](../master/icon-48.png) PolyExtend
 
 ### [Download for Chrome](https://surl.im/polychrome)
 
