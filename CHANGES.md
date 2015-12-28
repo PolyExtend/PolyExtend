@@ -1,11 +1,16 @@
 ### Future
-- Add option to hide avatars on Beam (and show on Twitch)
+- ~~Add option to hide avatars on Beam (and show on Twitch)~~
 - Show Twitch user avatars for BeamLink beautifier
 - Add option to not override rank colors for teams and BeamLink
 - Add channel !!poly options
 - Don't reset options on update
 - New logo
+- Add show deleted messages
+- Add rank icons for Beam
 - Add dark theme for Twitch
+- Make API better
+- Finish Twitch API
+- Add external script support
 - Add small tweaks option
 	- Dev and sub icons on left for Beam
 	- No padding overlap on Twitch messages

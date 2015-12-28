@@ -1,10 +1,11 @@
 chrome.storage.sync.get("options", function(items) {
-	if(!items.options || Object.keys(items.options).length != 13) { // Reset options when upgrade/new install.
+	if(!items.options || Object.keys(items.options).length != 14) { // Reset options when upgrade/new install.
 		chrome.storage.sync.set({options: {
 			polyemotes: true,
 			twitchemotes: true,
 			linkimages: true,
 			realthumbs: false,
+			devatars: true,
 			colornames: false,
 			colornamesover: false,
 			chatalerts: true,
