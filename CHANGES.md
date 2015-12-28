@@ -3,7 +3,7 @@
 - Show Twitch user avatars for BeamLink beautifier
 - Add option to not override rank colors for teams and BeamLink
 - Add channel !!poly options
-- Don't reset options on update
+- ~~Don't reset options on update~~
 - New logo
 - Add show deleted messages
 - Add rank icons for Beam

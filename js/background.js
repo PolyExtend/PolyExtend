@@ -1,21 +1,31 @@
 chrome.storage.sync.get("options", function(items) {
-	if(!items.options || Object.keys(items.options).length != 14) { // Reset options when upgrade/new install.
-		chrome.storage.sync.set({options: {
-			polyemotes: true,
-			twitchemotes: true,
-			linkimages: true,
-			realthumbs: false,
-			devatars: true,
-			colornames: false,
-			colornamesover: false,
-			chatalerts: true,
-			teams: true,
-			beamlink: true,
-			beamlinkcolor: true,
-			showdeleted: false,
-			separator: false,
-			darkheader: false
-		}});
+	var tooptions = {
+		polyemotes: true,
+		twitchemotes: true,
+		linkimages: true,
+		realthumbs: false,
+		devatars: true,
+		colornames: false,
+		colornamesover: false,
+		chatalerts: true,
+		teams: true,
+		beamlink: true,
+		beamlinkcolor: true,
+		showdeleted: false,
+		separator: false,
+		darkheader: false
+	}
+	
+	if(!items.options || Object.keys(items.options).length != Object.keys(tooptions).length) { // Reset options when upgrade/new install.
+		for(var i = 0; i < Object.keys(tooptions).length; i++) {
+			var cur = Object.keys(tooptions)[i];
+			
+			if(Object.keys(items.options).indexOf(cur) > -1) {
+				tooptions[cur] = items.options[cur];
+			}
+		}
+		
+		chrome.storage.sync.set({options: tooptions});
 	}
 });
 
