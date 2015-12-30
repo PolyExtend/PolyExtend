@@ -27,10 +27,12 @@
 			"HR"
 		],
 		"mcdoesgaming": [
-			"mcdoesgaming"
+			"mcdoesgaming",
+			"queenchris"
 		],
 		"queenchris": [
-			"queenchris"
+			"queenchris",
+			"mcdoesgaming"
 		],
         "vledderjunior": [
 			"vledderjunior"
