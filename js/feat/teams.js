@@ -10,7 +10,8 @@ $.get("//extend.dinu.ga/teams.json", function(teams) {
 				if(teams[Object.keys(teams)[i]].members.indexOf(name.toLowerCase()) > -1) { // If user is in current selected team...
 					addBadge(mut, Object.keys(teams)[i], teams[Object.keys(teams)[i]].color, "//extend.dinu.ga/badges/" + Object.keys(teams)[i] + ".png"); // Add team badge.
 					
-					if(teams[Object.keys(teams)[i]].color) { // Add team color if there is one.
+					if(teams[Object.keys(teams)[i]].color &&
+					(options.teamsnamesover || !getRanks(mut).length)) { // Add team color if there is one.
 						addColor(mut, teams[Object.keys(teams)[i]].color);
 					}
 				}

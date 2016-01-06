@@ -12,17 +12,17 @@ setInterval(function() {
 			$("#polystyle-separator").remove();
 		}
 		
-		if(options.darkheader && !$("#polystyle-darkheader").length) {
-			$("head").append(
-				"<style id='polystyle-darkheader'>" +
-					".navbar.ng-scope, .footer {" +
-						"background-color: rgba(0, 0, 0, 0.4);" +
-					"}" +
-				"</style>"
-			);
-		} else if(!options.darkheader && $("#polystyle-darkheader").length) {
-			$("#polystyle-darkheader").remove();
-		}
+		// if(options.darkheader && !$("#polystyle-darkheader").length) {
+		// 	$("head").append(
+		// 		"<style id='polystyle-darkheader'>" +
+		// 			".navbar.ng-scope, .footer {" +
+		// 				"background-color: rgba(0, 0, 0, 0.4);" +
+		// 			"}" +
+		// 		"</style>"
+		// 	);
+		// } else if(!options.darkheader && $("#polystyle-darkheader").length) {
+		// 	$("#polystyle-darkheader").remove();
+		// }
 	} else if(site == "twitch") {
 		if(options.separator && !$("#polystyle-separator").length) {
 			$("head").append(

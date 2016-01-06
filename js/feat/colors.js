@@ -1,6 +1,6 @@
 onMessageAdd(function(mut, name, message, id) {
 	if(options.colornames &&
-	(options.colornamesover || getRanks(mut).length == 0)) {
+	(options.colornamesover || !getRanks(mut).length)) {
 		var old = parseInt(name, 36); // Turn name into a number.
 		
 		var num1 = bigInt(Math.floor(old * 548.624373957303)); // Turn them into bigInts.

@@ -48,10 +48,18 @@ div {
 	transition: padding-left 0.4s;
 }
 
+div:last-child {
+	margin: 0;
+}
+
 .ch:checked + * + div {
 	height: auto;
 	margin: -4px 0;
 	padding-left: 16px;
+}
+
+.ch:checked + * + div:last-child {
+	margin-bottom: 0;
 }
 
 .fa {

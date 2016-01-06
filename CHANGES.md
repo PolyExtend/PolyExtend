@@ -1,10 +1,15 @@
+### 1.1 - Jan 5, 2016
+- Fixed a few things for Beam release
+- Added option to hide avatars in Beam
+- Added option to disable "overwrite rank color" for more things
+- Removed dark theme for now
+
+### 1.0 - Nov 27, 2015
+- Release
+
 ### Future
-- ~~Add option to hide avatars on Beam (and show on Twitch)~~
 - Show Twitch user avatars for BeamLink beautifier
-- Add option to not override rank colors for teams and BeamLink
 - Add channel !!poly options
-- ~~Don't reset options on update~~
-- New logo
 - Add show deleted messages
 - Add rank icons for Beam
 - Add dark theme for Twitch
@@ -17,6 +22,3 @@
 - Fix thumbnails not showing sometimes
 - Fix image link previews not showing for the poster
 - Fix message event for the poster
-
-### 1.0 - Nov 27, 2015
-- Release

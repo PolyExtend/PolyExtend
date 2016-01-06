@@ -9,11 +9,13 @@ chrome.storage.sync.get("options", function(items) {
 		colornamesover: false,
 		chatalerts: true,
 		teams: true,
+		teamsnamesover: false,
 		beamlink: true,
 		beamlinkcolor: true,
-		showdeleted: false,
+		beamlinknamesover: false,
+		// showdeleted: false,
 		separator: false,
-		darkheader: false
+		// darkheader: false
 	}
 	
 	if(!items.options || Object.keys(items.options).length != Object.keys(tooptions).length) { // Reset options when upgrade/new install.

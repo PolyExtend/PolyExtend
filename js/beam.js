@@ -44,7 +44,7 @@ $("document").ready(function() {
 				"transition: opacity 0.4s;" +
 			"}" +
 			
-			".channel-card:hover .polythumb {" +
+			".col-lg-3.col-md-4.col-sm-6.col-xs-12.be-u-m--b2.ng-scope:hover .polythumb {" +
 				"opacity: 0;" +
 			"}" +
 		"</style>"
