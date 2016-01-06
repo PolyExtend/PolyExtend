@@ -1,3 +1,6 @@
+### 1.1.1 - Jan 6, 2016
+- Fixed options not being created on fresh install
+
 ### 1.1 - Jan 5, 2016
 - Fixed a few things for Beam release
 - Added option to hide avatars in Beam

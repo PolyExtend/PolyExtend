@@ -18,7 +18,9 @@ chrome.storage.sync.get("options", function(items) {
 		// darkheader: false
 	}
 	
-	if(!items.options || Object.keys(items.options).length != Object.keys(tooptions).length) { // Reset options when upgrade/new install.
+	if(!items.options) { // Reset options on fresh install.
+		chrome.storage.sync.set({options: tooptions});
+	} else if(Object.keys(items.options).length != Object.keys(tooptions).length) { // Keep options on upgrade.
 		for(var i = 0; i < Object.keys(tooptions).length; i++) {
 			var cur = Object.keys(tooptions)[i];
 			
