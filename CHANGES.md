@@ -1,3 +1,6 @@
+### 1.1.2 - Jan 7, 2016
+- Tweaked thumbnails viewer
+
 ### 1.1.1 - Jan 6, 2016
 - Fixed options not being created on fresh install
 
@@ -22,6 +25,5 @@
 - Add small tweaks option
 	- Dev and sub icons on left for Beam
 	- No padding overlap on Twitch messages
-- Fix thumbnails not showing sometimes
 - Fix image link previews not showing for the poster
 - Fix message event for the poster
