@@ -1,3 +1,7 @@
+### 1.1.3 - Jan 14, 2016
+- Tweaked thumbnails viewer again
+- Made BeamLink beautifier compatible with StreamLink
+
 ### 1.1.2 - Jan 7, 2016
 - Tweaked thumbnails viewer
 

@@ -1,7 +1,9 @@
 onMessageAdd(function(mut, name, message, id) {
 	if(options.beamlink) {
 		if((name.toLowerCase() == "beamlink" || // If it's a linked message...
-		name.toLowerCase() == "beamlinkdev") &&
+		name.toLowerCase() == "beamlinkdev" ||
+		name.toLowerCase() == "streamlink_" ||
+		name.toLowerCase() == "streamlinkdev_") &&
 		message.slice(0, 1) == "[") {
 			replaceMessage( // Set the username and message.
 				mut,

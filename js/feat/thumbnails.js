@@ -4,7 +4,7 @@ if(site == "beam") {
 			if(options.realthumbs) {
 				for(var i = 0; i < mut.addedNodes.length; i++) {
 					if(!$(mut.addedNodes[i]).hasClass("polythumb")) {
-						var name = $($(mut.addedNodes[i]).parents()[3]).find(".text-primary").text();
+						var name = $(mut.addedNodes[i]).closest(".be-browse-card").find(".text-primary:first").text();
 						
 						$.get("//beam.pro/api/v1/users/search?query=" + name, function(found) { // Find and set the thumbnail.
 							$.get("//beam.pro/api/v1/users/" + found[0].id, function(user) {
