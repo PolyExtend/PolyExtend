@@ -1,3 +1,7 @@
+### 1.1.4 - Jan 24, 2016
+- Added legacy (Twitch style) emote syntax
+- Fixed Twitch mention highlights
+
 ### 1.1.3 - Jan 14, 2016
 - Tweaked thumbnails viewer again
 - Made BeamLink beautifier compatible with StreamLink
@@ -31,3 +35,6 @@
 	- No padding overlap on Twitch messages
 - Fix image link previews not showing for the poster
 - Fix message event for the poster
+- Make Twitch and Beam options separate
+- Improve performance
+- Show global and user emotes in emote list

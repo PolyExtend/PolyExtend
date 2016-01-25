@@ -2,6 +2,7 @@ chrome.storage.sync.get("options", function(items) {
 	var tooptions = {
 		polyemotes: true,
 		twitchemotes: true,
+		legacyemotes: false,
 		linkimages: true,
 		realthumbs: false,
 		devatars: true,

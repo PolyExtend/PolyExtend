@@ -1,15 +1,21 @@
 function addEmotes(message, emotes) {
 	if(site == "beam") {
 		for(var i = 0; i < emotes.length; i++) { // Replace for each emote in array.
-			message = message.replace(new RegExp(":" + emotes[i][0] + "\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote' title=':" + emotes[i][0] + "'>");
-			message = message.replace(new RegExp(":" + emotes[i][0] + "Spin\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin' title=':" + emotes[i][0] + "Spin'>");
-			message = message.replace(new RegExp(":" + emotes[i][0] + "Wheel\\b", "g"), "<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin-fast' title=':" + emotes[i][0] + "Wheel'>");
+			message = message.replace(new RegExp("(\\s|^):" + emotes[i][0] + "(?=\\s|$|<)", "g"), "$1<img src='" + emotes[i][1] + "' class='polyemote' title=':" + emotes[i][0] + "'>");
+			message = message.replace(new RegExp("(\\s|^):" + emotes[i][0] + "Spin(?=\\s|$|<)", "g"), "$1<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin' title=':" + emotes[i][0] + "Spin'>");
+			message = message.replace(new RegExp("(\\s|^):" + emotes[i][0] + "Wheel(?=\\s|$|<)", "g"), "$1<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin-fast' title=':" + emotes[i][0] + "Wheel'>");
+			
+			if(options.legacyemotes) {
+				message = message.replace(new RegExp("(\\s|^)" + emotes[i][0] + "(?=\\s|$|<)", "g"), "$1<img src='" + emotes[i][1] + "' class='polyemote' title=':" + emotes[i][0] + "'>");
+				message = message.replace(new RegExp("(\\s|^)" + emotes[i][0] + "Spin(?=\\s|$|<)", "g"), "$1<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin' title=':" + emotes[i][0] + "Spin'>");
+				message = message.replace(new RegExp("(\\s|^)" + emotes[i][0] + "Wheel(?=\\s|$|<)", "g"), "$1<img src='" + emotes[i][1] + "' class='polyemote polyemote-spin-fast' title=':" + emotes[i][0] + "Wheel'>");
+			}
 		}
 	} else if(site == "twitch") {
 		for(var i = 0; i < emotes.length; i++) { // Replace for each emote in array.
-			message = message.replace(new RegExp("\\b" + emotes[i][0] + "\\b", "g"), "<img src='" + emotes[i][1] + "' class='emoticon tooltip polyemote' original-title='" + emotes[i][0] + "'>");
-			message = message.replace(new RegExp("\\b" + emotes[i][0] + "Spin\\b", "g"), "<img src='" + emotes[i][1] + "' class='emoticon tooltip polyemote polyemote-spin' original-title='" + emotes[i][0] + "Spin'>");
-			message = message.replace(new RegExp("\\b" + emotes[i][0] + "Wheel\\b", "g"), "<img src='" + emotes[i][1] + "' class='emoticon tooltip polyemote polyemote-spin-fast' original-title='" + emotes[i][0] + "Wheel'>");
+			message = message.replace(new RegExp("(\\s|^)" + emotes[i][0] + "(?=\\s|$)", "g"), "$1<img src='" + emotes[i][1] + "' class='emoticon tooltip polyemote' original-title='" + emotes[i][0] + "'>");
+			message = message.replace(new RegExp("(\\s|^)" + emotes[i][0] + "Spin(?=\\s|$)", "g"), "$1<img src='" + emotes[i][1] + "' class='emoticon tooltip polyemote polyemote-spin' original-title='" + emotes[i][0] + "Spin'>");
+			message = message.replace(new RegExp("(\\s|^)" + emotes[i][0] + "Wheel(?=\\s|$)", "g"), "$1<img src='" + emotes[i][1] + "' class='emoticon tooltip polyemote polyemote-spin-fast' original-title='" + emotes[i][0] + "Wheel'>");
 		}
 	}
 	
