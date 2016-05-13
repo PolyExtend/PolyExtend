@@ -1,3 +1,6 @@
+### 1.1.5 - May 13, 2016
+- Fixed channel thumbnails breaking
+
 ### 1.1.4 - Jan 24, 2016
 - Added legacy (Twitch style) emote syntax
 - Fixed Twitch mention highlights

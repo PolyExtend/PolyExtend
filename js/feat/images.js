@@ -1,4 +1,5 @@
 onMessageAdd(function(mut, name, message, id) {
+	console.log("got it");
 	var htmlized = $($.parseHTML("<div>" + message + "</div>")); // Make jQuery object from message text.
 	
 	if(options.linkimages && htmlized.children("a").length > 0) {
@@ -13,6 +14,7 @@ onMessageAdd(function(mut, name, message, id) {
 			}
 		}
 		
+		console.log(htmlized.html());
 		replaceMessage(mut, name, htmlized.html());
 	}
 });
