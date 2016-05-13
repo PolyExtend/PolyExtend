@@ -35,18 +35,6 @@ $("document").ready(function() {
 				"animation-duration: 0.5s;" +
 				"animation-iteration-count: infinite;" +
 			"}" +
-			
-			".polythumb {" +
-				"position: absolute;" +
-				"top: 0;" +
-				"left: 0;" +
-				"opacity: 1;" +
-				"transition: opacity 0.4s;" +
-			"}" +
-			
-			".col-lg-3.col-md-4.col-sm-6.col-xs-12.be-u-m--b2.ng-scope:hover .polythumb {" +
-				"opacity: 0;" +
-			"}" +
 		"</style>"
 	);
 	
