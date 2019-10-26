@@ -1,5 +1,5 @@
 var working = false; // When true, doesn't trigger message events.
-var site = "beam";
+var site = "mixer";
 var addevents = []; // Arrays for functions to be run for message events.
 var delevents = [];
 
