@@ -5,9 +5,9 @@ if(site == "beam") {
 				for(var i = 0; i < mut.addedNodes.length; i++) {
 					var name = $(mut.addedNodes[i]).closest(".be-browse-card").find("md-card-title-text :first").text();
 					
-					$.get("//beam.pro/api/v1/users/search?query=" + name, function(found) { // Find and set the thumbnail.
-						$.get("//beam.pro/api/v1/users/" + found[0].id, function(user) {
-							$.get("//beam.pro/api/v1/channels/" + user.channel.id, function(channel) {
+					$.get("//mixer.com/api/v1/users/search?query=" + name, function(found) { // Find and set the thumbnail.
+						$.get("//mixer.com/api/v1/users/" + found[0].id, function(user) {
+							$.get("//mixer.com/api/v1/channels/" + user.channel.id, function(channel) {
 								if(channel.thumbnail) {
 									$(this.mut.addedNodes[this.i]).attr("src", channel.thumbnail.url);
 								}
