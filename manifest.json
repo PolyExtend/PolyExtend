@@ -12,7 +12,7 @@
 	
 	"content_scripts": [
 		{
-			"matches": ["*://*.beam.pro/*"],
+			"matches": ["*://*.mixer.com/*"],
 			"js": [
 				"js/lib/jquery.js",
 				"js/lib/observe.js",
