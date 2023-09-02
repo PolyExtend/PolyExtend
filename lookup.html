@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PolyDev</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        a {
+            color: #15ebd2;
+        }
+        
+        .backer {
+            background: #15ebd2;
+        }
+        
+        .backer-dark {
+            background: #12d0b9;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            width: 11rem;
+            /* Add other card styling here */
+        }
+
+        .card img {
+            width: 26%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="z-depth-1">
+        <nav class="z-depth-0 backer-dark">
+            <div class="nav-wrapper container">
+                <ul class="left">
+                    <li class="active"><a href="/"><img src="/images/dev-white.png" style="height: 100%; padding: 12px 0;"></a></li>
+                    <li><a href="/extend/">PolyExtend</a></li>
+                    <li><a href="/bot/">PolyBot</a></li>
+                    <li><a href="/streamlookup/">StreamLookup</a></li>
+                    <li><a href="//link.polydev.ml/">StreamLink</a></li>
+                </ul>
+            </div>
+        </nav>
+ 
+        
+        <div class="container mt-4">
+            <!-- Bootstrap form component -->
+            <form id="channelLookupForm" class="mb-4">
+                <div class="mb-3">
+                    <label for="inputField" class="form-label">Enter Channel Name:</label>
+                    <input type="text" class="form-control" id="inputField" name="user_input" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            
+            <div class="card-container" id="emoteContainer">
+                <!-- Emotes will be displayed here -->
+            </div>
+        </div>
+    </main>
+    
+    <footer class="container section grey-text center-align">
+        &copy; 2016 PolyDev
+    </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+<script>
+    document.getElementById('channelLookupForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const channel = document.getElementById('inputField').value;
+        const api_url = `https://emotes.adamcy.pl/v1/channel/${channel}/emotes/all`;
+
+        fetch(api_url)
+            .then(response => response.json())
+            .then(data => {
+                const emoteContainer = document.getElementById('emoteContainer');
+                emoteContainer.innerHTML = '';
+
+                data.forEach(emote => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+
+                    const img = document.createElement('img');
+                    img.src = emote.urls[0].url;
+                    img.alt = emote.code;
+
+                    const cardBody = document.createElement('div');
+                    cardBody.className = 'card-body';
+
+                    const cardText = document.createElement('p');
+                    cardText.className = 'card-text';
+                    cardText.textContent = emote.code;
+
+                    cardBody.appendChild(cardText);
+
+                    // Display provider information based on the value
+                    if (emote.provider === 1) {
+                        const providerText = document.createElement('p');
+                        providerText.className = 'card-text';
+                        providerText.innerHTML = `From: <a href="https://bit.ly/Bacon7TV" target="_blank">SevenTV</a>`;
+                        cardBody.appendChild(providerText);
+                    } else if (emote.provider === 2) {
+                        const providerText = document.createElement('p');
+                        providerText.className = 'card-text';
+                        providerText.innerHTML = `From: <a href="https://bit.ly/BaconBTTV" target="_blank">BetterTwitchTV</a>`;
+                        cardBody.appendChild(providerText);
+                    } else if (emote.provider === 3) {
+                        const providerText = document.createElement('p');
+                        providerText.className = 'card-text';
+                        providerText.innerHTML = `From: <a href="https://bit.ly/BaconFFZ" target="_blank">FrankerFaceZ</a>`;
+                        cardBody.appendChild(providerText);
+                    } else {
+                        const providerText = document.createElement('p');
+                        providerText.className = 'card-text';
+                        providerText.innerHTML = `From: <a href="https://twitch.tv/${channel}" target="_blank">Twitch</a>`;
+                        cardBody.appendChild(providerText);
+                    }
+
+                    card.appendChild(img);
+                    card.appendChild(cardBody);
+                    emoteContainer.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    });
+</script>
+
+</body>
+</html>
